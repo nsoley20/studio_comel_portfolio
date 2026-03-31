@@ -111,7 +111,8 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   top:-200px;left:-200px;
   z-index:1;
   pointer-events:none;
-  animation:orbPulse1 8s ease-in-out infinite;
+  animation:orbPulse1 12s ease-in-out infinite;
+  will-change:transform;
 }
 .hero-orb-2{
   position:absolute;
@@ -121,7 +122,8 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   bottom:-100px;right:10%;
   z-index:1;
   pointer-events:none;
-  animation:orbPulse2 10s ease-in-out infinite;
+  animation:orbPulse2 16s ease-in-out infinite;
+  will-change:transform;
 }
 .hero-orb-3{
   position:absolute;
@@ -131,11 +133,12 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   top:30%;right:40%;
   z-index:1;
   pointer-events:none;
-  animation:orbPulse3 12s ease-in-out infinite;
+  animation:orbPulse3 18s ease-in-out infinite;
+  will-change:transform;
 }
-@keyframes orbPulse1{0%,100%{transform:scale(1);opacity:0.8}50%{transform:scale(1.15);opacity:1}}
-@keyframes orbPulse2{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.2);opacity:0.9}}
-@keyframes orbPulse3{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:0.8}}
+@keyframes orbPulse1{0%,100%{transform:scale(1);opacity:0.8}50%{transform:scale(1.1);opacity:1}}
+@keyframes orbPulse2{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.12);opacity:0.9}}
+@keyframes orbPulse3{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.08);opacity:0.8}}
 
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(125deg,var(--green-deep) 30%,rgba(11,61,50,0.4) 100%);z-index:2}
 
@@ -219,7 +222,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   inset:-40px;
   border-radius:50%;
   background:radial-gradient(circle,rgba(200,185,122,0.12) 0%,transparent 70%);
-  animation:orbPulse2 6s ease-in-out infinite;
 }
 .hero-image-col img{
   max-width:380px;width:100%;
@@ -574,7 +576,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   top:-200px;right:-200px;
   z-index:0;
   pointer-events:none;
-  animation:orbPulse1 10s ease-in-out infinite;
 }
 .about-orb-2{
   position:absolute;
@@ -584,7 +585,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   bottom:-100px;left:50%;
   z-index:0;
   pointer-events:none;
-  animation:orbPulse2 14s ease-in-out infinite;
 }
 
 .about-landscape{
@@ -666,14 +666,12 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   width:320px;height:320px;border-radius:50%;
   background:radial-gradient(circle,rgba(200,185,122,0.2) 0%,transparent 70%);
   bottom:-60px;right:-40px;z-index:1;pointer-events:none;
-  animation:orbPulse2 10s ease-in-out infinite;
 }
 .about-art-orb-t{
   position:absolute;
   width:220px;height:220px;border-radius:50%;
   background:radial-gradient(circle,rgba(80,220,160,0.14) 0%,transparent 70%);
   top:-40px;left:-30px;z-index:1;pointer-events:none;
-  animation:orbPulse3 13s ease-in-out infinite;
 }
 
 /* Ligne horizontale LED */
@@ -924,7 +922,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   background:radial-gradient(circle,rgba(200,185,122,0.2) 0%,transparent 70%);
   top:-50px;right:-50px;
   pointer-events:none;
-  animation:orbPulse2 8s ease-in-out infinite;
 }
 .resource-visual-orb2{
   position:absolute;
@@ -933,7 +930,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   background:radial-gradient(circle,rgba(80,220,160,0.12) 0%,transparent 70%);
   bottom:-30px;left:-30px;
   pointer-events:none;
-  animation:orbPulse3 11s ease-in-out infinite;
 }
 
 .resource-mockup{
@@ -1418,6 +1414,22 @@ footer .footer-inner,footer .footer-bottom{
 
 /* ── 768px ── */
 @media(max-width:768px){
+  /* Tabs — scrollable on mobile */
+  .tabs-bar{
+    width:100%!important;
+    overflow-x:auto!important;
+    flex-wrap:nowrap!important;
+    -webkit-overflow-scrolling:touch;
+    padding:6px!important;
+    gap:4px!important;
+  }
+  .tab-btn{
+    white-space:nowrap!important;
+    flex-shrink:0!important;
+    padding:9px 16px!important;
+    font-size:0.7rem!important;
+  }
+
   /* Hero */
   .hero-inner{
     grid-template-columns:1fr;
@@ -1579,24 +1591,23 @@ footer .footer-inner,footer .footer-bottom{
   #hero{padding-top:0}
 }
 
-/* ── REVEAL — blur + scale dramatique ── */
+/* ── REVEAL — scale + fade ── */
 .reveal{
   opacity:0;
-  transform:translateY(38px) scale(0.972);
-  filter:blur(6px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);
+  transform:translateY(36px) scale(0.975);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
 }
-.reveal.visible{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
 .reveal-left{
-  opacity:0;transform:translateX(-38px) scale(0.972);filter:blur(6px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);
+  opacity:0;transform:translateX(-36px) scale(0.975);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
 }
-.reveal-left.visible{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
+.reveal-left.visible{opacity:1;transform:translateX(0) scale(1)}
 .reveal-right{
-  opacity:0;transform:translateX(38px) scale(0.972);filter:blur(6px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);
+  opacity:0;transform:translateX(36px) scale(0.975);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
 }
-.reveal-right.visible{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
+.reveal-right.visible{opacity:1;transform:translateX(0) scale(1)}
 
 /* ── BOUTONS ARTISTIQUES ── */
 /* btn-primary */
@@ -1985,10 +1996,10 @@ footer .footer-inner,footer .footer-bottom{
       <h2 class="section-title" style="color:var(--white)">QUELQUES PROJETS QUI<br>PARLENT POUR NOUS</h2>
     </div>
     <div class="tabs-bar">
-      <button class="tab-btn active" onclick="switchTab('cm',event)">Community Management</button>
-      <button class="tab-btn" onclick="switchTab('design',event)">Conception Graphique</button>
-      <button class="tab-btn" onclick="switchTab('affiches',event)">Affiches &amp; Visuels</button>
-      <button class="tab-btn" onclick="switchTab('relance',event)"><img src="icone fond vert.PNG" class="tab-icon" alt="">Relance</button>
+      <button class="tab-btn active" onclick="switchTab('cm',this)">Community Management</button>
+      <button class="tab-btn" onclick="switchTab('design',this)">Conception Graphique</button>
+      <button class="tab-btn" onclick="switchTab('affiches',this)">Affiches &amp; Visuels</button>
+      <button class="tab-btn" onclick="switchTab('relance',this)"><img src="icone fond vert.PNG" class="tab-icon" alt="">Relance</button>
     </div>
 
     <!-- CM TAB -->
