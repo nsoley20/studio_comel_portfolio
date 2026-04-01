@@ -304,8 +304,6 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   position:relative;
   overflow:hidden;
 }
-
-/* Filigrane 1 en décor services */
 #services::before{
   content:'';
   position:absolute;
@@ -316,100 +314,230 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   mix-blend-mode:screen;
   pointer-events:none;
 }
-
-/* LED orb services — vert en coin */
 #services::after{
   content:'';
   position:absolute;
-  width:600px;height:600px;
+  width:700px;height:700px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(11,61,50,0.5) 0%,transparent 70%);
-  bottom:-200px;right:-100px;
+  background:radial-gradient(circle,rgba(11,61,50,0.35) 0%,transparent 70%);
+  bottom:-280px;right:-150px;
   pointer-events:none;
 }
-
 .services-inner{max-width:1320px;margin:0 auto;position:relative;z-index:1}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:80px}
 
+/* ── BENTO GRID ── */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:auto;
+  gap:16px;
+  margin-bottom:96px;
+}
+.sc-1{grid-column:span 7}
+.sc-2{grid-column:span 5}
+.sc-3{grid-column:span 5}
+.sc-4{grid-column:span 7}
+
+/* ── SERVICE CARD base ── */
 .service-card{
-  background:#0a110f;
-  padding:clamp(24px,3.5vw,44px) clamp(20px,3vw,40px);
-  transition:background 0.4s;
+  padding:clamp(28px,4vw,48px) clamp(24px,3.5vw,44px);
+  border-radius:24px;
   position:relative;
   overflow:hidden;
-  border-radius:20px;
+  transition:transform 0.45s cubic-bezier(.16,1,.3,1),box-shadow 0.45s,background 0.3s;
+  cursor:default;
+  border:1px solid rgba(255,255,255,0.04);
 }
-.service-card::before{
-  content:'';
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  transform:scaleX(0);
-  transition:transform 0.4s cubic-bezier(.16,1,.3,1);
+.service-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 28px 70px rgba(0,0,0,0.45),0 0 0 1px rgba(200,185,122,0.1);
 }
-/* Led glow en coin de carte */
-.service-card::after{
-  content:'';
-  position:absolute;
-  bottom:-40px;right:-40px;
-  width:120px;height:120px;
-  border-radius:50%;
-  background:radial-gradient(circle,var(--led-gold) 0%,transparent 70%);
-  opacity:0;
-  transition:opacity 0.4s;
-}
-.service-card:hover{background:#0d1712}
-.service-card:hover::before{transform:scaleX(1)}
-.service-card:hover::after{opacity:1}
 
-.service-icon{
-  width:52px;height:52px;
-  border-radius:12px;
-  background:rgba(11,61,50,0.5);
-  border:1px solid rgba(200,185,122,0.1);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:28px;
-  position:relative;
-}
-.service-icon::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:12px;
-  box-shadow:inset 0 0 20px rgba(80,220,160,0.05);
-}
-.service-icon svg{width:24px;height:24px;stroke:#7ab89e;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.service-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:12px;letter-spacing:0.04em}
-.service-card p{font-size:0.84rem;color:rgba(255,255,255,0.42);line-height:1.75}
+/* Tints individuels par carte */
+.sc-1{background:linear-gradient(145deg,#0c1410 0%,#081009 100%)}
+.sc-2{background:linear-gradient(145deg,#0b1210 0%,#070e0c 100%)}
+.sc-3{background:linear-gradient(145deg,#0d1310 0%,#091109 100%)}
+.sc-4{background:linear-gradient(145deg,#0b1311 0%,#070f0d 100%)}
 
-/* NICHES */
-.niches-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--white);margin-bottom:40px;letter-spacing:0.04em}
-.niches-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.niche-card{
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.05);
-  border-radius:16px;
-  padding:20px;
-  transition:all 0.3s;
-  position:relative;
-  overflow:hidden;
-}
-.niche-card::before{
-  content:'';
+/* Accent bar top (couleur par carte) */
+.sc-accent{
   position:absolute;
   top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(200,185,122,0.3),transparent);
-  transform:scaleX(0);
-  transition:transform 0.4s;
+  height:2px;
+  background:linear-gradient(90deg,var(--sc-color,var(--accent)),transparent 70%);
+  transition:opacity 0.3s;
 }
-.niche-card:hover{border-color:rgba(200,185,122,0.2);background:rgba(200,185,122,0.03)}
-.niche-card:hover::before{transform:scaleX(1)}
-.niche-icon{width:36px;height:36px;border-radius:8px;background:rgba(11,61,50,0.5);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.niche-icon svg{width:17px;height:17px;stroke:#7ab89e;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.niche-name{font-size:0.84rem;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:4px}
-.niche-client{font-size:0.7rem;color:rgba(200,185,122,0.6);letter-spacing:0.04em}
+.sc-1{--sc-color:rgba(200,185,122,0.9)}
+.sc-2{--sc-color:rgba(80,220,160,0.8)}
+.sc-3{--sc-color:rgba(200,185,122,0.7)}
+.sc-4{--sc-color:rgba(80,200,180,0.75)}
+
+/* Numéro watermark artistique */
+.sc-num{
+  position:absolute;
+  right:-8px;bottom:-24px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(90px,12vw,160px);
+  line-height:1;
+  letter-spacing:-0.02em;
+  color:rgba(255,255,255,0.028);
+  pointer-events:none;
+  user-select:none;
+  transition:color 0.4s;
+}
+.service-card:hover .sc-num{color:rgba(200,185,122,0.045)}
+
+/* Orb glow en arrière-plan */
+.sc-orb{
+  position:absolute;
+  width:200px;height:200px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--sc-orb,rgba(80,220,160,0.06)) 0%,transparent 70%);
+  top:-60px;right:-60px;
+  pointer-events:none;
+  transition:opacity 0.4s;
+  opacity:0.6;
+}
+.service-card:hover .sc-orb{opacity:1}
+.sc-1 .sc-orb{--sc-orb:rgba(200,185,122,0.07)}
+.sc-2 .sc-orb{--sc-orb:rgba(80,220,160,0.07)}
+.sc-3 .sc-orb{--sc-orb:rgba(200,185,122,0.06)}
+.sc-4 .sc-orb{--sc-orb:rgba(80,200,180,0.07)}
+
+/* Icon ── */
+.service-icon{
+  width:54px;height:54px;
+  border-radius:14px;
+  background:rgba(11,61,50,0.55);
+  border:1px solid rgba(200,185,122,0.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:32px;
+  transition:background 0.3s,border-color 0.3s,transform 0.4s cubic-bezier(.16,1,.3,1);
+}
+.service-card:hover .service-icon{
+  background:rgba(11,61,50,0.8);
+  border-color:rgba(200,185,122,0.22);
+  transform:scale(1.08);
+}
+.service-icon svg{width:22px;height:22px;stroke:#8ec9ae;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Titre + desc */
+.service-card h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.4rem,2.2vw,1.9rem);
+  color:var(--white);margin-bottom:14px;letter-spacing:0.04em;
+  position:relative;z-index:1;
+}
+.service-card p{
+  font-size:0.83rem;
+  color:rgba(255,255,255,0.4);
+  line-height:1.78;
+  position:relative;z-index:1;
+}
+
+/* Tags plateforme sous la description */
+.sc-tags{
+  display:flex;gap:7px;flex-wrap:wrap;
+  margin-top:22px;
+  position:relative;z-index:1;
+}
+.sc-tags span{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(200,185,122,0.55);
+  background:rgba(200,185,122,0.06);
+  border:1px solid rgba(200,185,122,0.12);
+  border-radius:20px;
+  padding:3px 11px;
+}
+
+/* CTA slide-in hover */
+.sc-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.7rem;font-weight:600;
+  color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;
+  margin-top:28px;
+  opacity:0;
+  transform:translateX(-10px);
+  transition:opacity 0.35s cubic-bezier(.16,1,.3,1),transform 0.35s cubic-bezier(.16,1,.3,1);
+  position:relative;z-index:1;
+}
+.sc-cta-arrow{
+  width:18px;height:1.5px;
+  background:var(--accent);
+  position:relative;
+  transition:width 0.3s;
+}
+.sc-cta-arrow::after{
+  content:'';position:absolute;right:0;top:-3px;
+  border:3px solid transparent;
+  border-left-color:var(--accent);
+  border-top:2.5px solid transparent;
+  border-bottom:2.5px solid transparent;
+  border-right:none;
+}
+.service-card:hover .sc-cta{opacity:1;transform:translateX(0)}
+.service-card:hover .sc-cta-arrow{width:28px}
+
+/* Responsive bento */
+@media(max-width:960px){
+  .sc-1,.sc-2,.sc-3,.sc-4{grid-column:span 6}
+}
+@media(max-width:620px){
+  .sc-1,.sc-2,.sc-3,.sc-4{grid-column:span 12}
+  .services-grid{gap:12px}
+}
+
+/* ── NICHES — tag cloud fluide ── */
+.niches-section{margin-top:0}
+.niches-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:40px;flex-wrap:wrap;gap:12px;
+}
+.niches-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  color:var(--white);letter-spacing:0.04em;margin:0;
+}
+.niches-count{
+  font-size:0.65rem;font-weight:600;
+  color:rgba(200,185,122,0.45);
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+.niches-flow{display:flex;flex-wrap:wrap;gap:10px}
+.niche-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:11px 18px;
+  background:rgba(255,255,255,0.022);
+  border:1px solid rgba(255,255,255,0.055);
+  border-radius:100px;
+  transition:all 0.35s cubic-bezier(.16,1,.3,1);
+  cursor:default;
+  position:relative;overflow:hidden;
+}
+.niche-tag::before{
+  content:'';position:absolute;inset:0;border-radius:100px;
+  background:linear-gradient(135deg,rgba(200,185,122,0.06),transparent);
+  opacity:0;transition:opacity 0.35s;
+}
+.niche-tag:hover{
+  border-color:rgba(200,185,122,0.22);
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.3);
+}
+.niche-tag:hover::before{opacity:1}
+.niche-icon{
+  width:30px;height:30px;
+  border-radius:50%;
+  background:rgba(11,61,50,0.7);
+  border:1px solid rgba(80,220,160,0.12);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.niche-icon svg{width:14px;height:14px;stroke:#7ab89e;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.niche-info{display:flex;flex-direction:column;gap:2px}
+.niche-name{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);white-space:nowrap}
+.niche-client{font-size:0.62rem;color:rgba(200,185,122,0.5);white-space:nowrap}
 
 /* ─── PROJETS ─────────────────────────────────────────────── */
 #projets{
@@ -1510,7 +1638,7 @@ footer .footer-inner,footer .footer-bottom{
 /* ── 1100px ── */
 @media(max-width:1100px){
   .nav-links{gap:20px}
-  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  
   .footer-inner{grid-template-columns:2fr 1fr 1fr;gap:32px}
   .hero-inner{gap:40px}
   .about-inner{gap:60px}
@@ -1520,7 +1648,7 @@ footer .footer-inner,footer .footer-bottom{
 @media(max-width:900px){
   .nav-links{display:none}
   .nav-menu-btn{display:flex}
-  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  
   .affiches-masonry{columns:3;column-gap:8px}
   .footer-inner{grid-template-columns:1fr 1fr;gap:28px}
   .footer-bottom{margin-top:36px}
@@ -1569,8 +1697,8 @@ footer .footer-inner,footer .footer-bottom{
   .stat-number{font-size:56px}
 
   /* Services */
-  .services-grid{grid-template-columns:1fr 1fr}
-  .niches-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  
+  
 
   /* Projets */
   .cm-project{grid-template-columns:1fr;gap:28px}
@@ -1614,8 +1742,8 @@ footer .footer-inner,footer .footer-bottom{
   .stats-inner{grid-template-columns:1fr}
   .stat-block{padding:24px 16px}
   .stat-number{font-size:52px}
-  .services-grid{grid-template-columns:1fr}
-  .niches-grid{grid-template-columns:1fr 1fr}
+  
+  
   .hero-inner{padding-top:90px;padding-bottom:56px}
   .hero-title{line-height:0.85}
   .hero-image-col img{max-width:170px}
@@ -1631,7 +1759,7 @@ footer .footer-inner,footer .footer-bottom{
 
 /* ── 420px ── */
 @media(max-width:420px){
-  .niches-grid{grid-template-columns:1fr}
+  
   .poster-item{width:110px;height:145px}
   .affiches-masonry{columns:2;column-gap:5px}
   .about-art{height:240px}
@@ -1800,10 +1928,6 @@ footer .footer-inner,footer .footer-bottom{
 .form-nav-prev{border-radius:16px!important}
 
 /* ── CARDS BORDER RADIUS + HOVER 3D ── */
-.service-card{border-radius:26px!important;transition:background 0.4s,box-shadow 0.4s,transform 0.4s cubic-bezier(.16,1,.3,1)!important}
-.service-card:hover{transform:translateY(-5px)!important;box-shadow:0 20px 50px rgba(0,0,0,0.35),0 0 0 1px rgba(200,185,122,0.1)!important}
-.niche-card{border-radius:22px!important;transition:all 0.4s cubic-bezier(.16,1,.3,1)!important}
-.niche-card:hover{transform:translateY(-4px)!important;box-shadow:0 16px 36px rgba(0,0,0,0.3),0 0 0 1px rgba(200,185,122,0.15)!important}
 .design-card{border-radius:26px!important;transition:border-color 0.3s,transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s!important}
 .design-card:hover{transform:translateY(-4px)!important;box-shadow:0 20px 50px rgba(0,0,0,0.3)!important}
 .cm-stat{border-radius:20px!important;transition:transform 0.35s cubic-bezier(.16,1,.3,1),box-shadow 0.35s!important}
@@ -2161,55 +2285,97 @@ footer{position:relative;overflow:hidden}
       <span class="section-eyebrow">Ce que nous faisons</span>
       <h2 class="section-title" style="color:var(--white)">NOS SERVICES</h2>
     </div>
+
     <div class="services-grid">
-      <div class="service-card reveal">
+
+      <!-- 01 — Réseaux sociaux (large gauche) -->
+      <div class="service-card sc-1 reveal">
+        <div class="sc-accent"></div>
+        <div class="sc-orb"></div>
+        <span class="sc-num">01</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3>Gestion des réseaux sociaux</h3>
-        <p>Stratégie éditoriale, création de contenu, planification et animation de vos communautés sur toutes les plateformes.</p>
+        <p>Stratégie éditoriale, création de contenu, planification et animation de vos communautés sur toutes les plateformes. Du concept au post publié — on s'occupe de tout.</p>
+        <div class="sc-tags">
+          <span>Instagram</span><span>TikTok</span><span>Facebook</span><span>LinkedIn</span>
+        </div>
+        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
       </div>
-      <div class="service-card reveal">
+
+      <!-- 02 — Conception graphique (compact droite) -->
+      <div class="service-card sc-2 reveal">
+        <div class="sc-accent"></div>
+        <div class="sc-orb"></div>
+        <span class="sc-num">02</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
         </div>
         <h3>Conception graphique</h3>
-        <p>Identités visuelles, chartes graphiques, affiches, flyers et tout support visuel pour votre communication.</p>
+        <p>Identités visuelles, chartes graphiques, affiches, flyers et tout support visuel qui représente votre marque avec caractère.</p>
+        <div class="sc-tags">
+          <span>Branding</span><span>Affiches</span><span>Flyers</span>
+        </div>
+        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
       </div>
-      <div class="service-card reveal">
+
+      <!-- 03 — Audit (compact gauche) -->
+      <div class="service-card sc-3 reveal">
+        <div class="sc-accent"></div>
+        <div class="sc-orb"></div>
+        <span class="sc-num">03</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <h3>Audit des réseaux sociaux</h3>
-        <p>Analyse complète de votre présence digitale, benchmark concurrentiel et recommandations stratégiques actionables.</p>
+        <p>Analyse complète de votre présence digitale, benchmark concurrentiel et recommandations actionables pour accélérer votre croissance.</p>
+        <div class="sc-tags">
+          <span>Analyse</span><span>KPIs</span><span>Benchmark</span>
+        </div>
+        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
       </div>
-      <div class="service-card reveal">
+
+      <!-- 04 — Stratégie (large droite) -->
+      <div class="service-card sc-4 reveal">
+        <div class="sc-accent"></div>
+        <div class="sc-orb"></div>
+        <span class="sc-num">04</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <h3>Stratégie digitale</h3>
-        <p>Définition de votre positionnement en ligne, plan de communication sur mesure et accompagnement dans la durée.</p>
+        <p>Définition de votre positionnement en ligne, plan de communication sur mesure et accompagnement dans la durée pour construire une présence digitale durable et cohérente.</p>
+        <div class="sc-tags">
+          <span>Positionnement</span><span>Plan éditorial</span><span>Croissance</span>
+        </div>
+        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
+      </div>
+
+    </div>
+
+    <!-- NICHES — tag cloud -->
+    <div class="niches-section reveal">
+      <div class="niches-header">
+        <h3 class="niches-title">Secteurs maîtrisés</h3>
+        <span class="niches-count">12 secteurs · Dakar &amp; diaspora</span>
+      </div>
+      <div class="niches-flow">
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="niche-info"><span class="niche-name">Événementiel</span><span class="niche-client">Yabiso · Vougaland</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="niche-info"><span class="niche-name">Santé &amp; Bien-être</span><span class="niche-client">Shilajit Sénégal</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="niche-info"><span class="niche-name">Transport &amp; Logistique</span><span class="niche-client">Ndossy Services</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="niche-info"><span class="niche-name">Sport &amp; Fitness</span><span class="niche-client">Amajelo Judo</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div><div class="niche-info"><span class="niche-name">Restauration</span><span class="niche-client">Tasty Food · Pizza By Ange</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/></svg></div><div class="niche-info"><span class="niche-name">Mode &amp; Beauté</span><span class="niche-client">Touch By Mj</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="niche-info"><span class="niche-name">Immobilier</span><span class="niche-client">Résidences Fadi</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div><div class="niche-info"><span class="niche-name">Tourisme &amp; Voyage</span><span class="niche-client">Vougaland</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div class="niche-info"><span class="niche-name">Finance &amp; Services</span><span class="niche-client">J-Transfert · GEY</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div class="niche-info"><span class="niche-name">E-commerce</span><span class="niche-client">J-Shopping · MK Cuisine</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/></svg></div><div class="niche-info"><span class="niche-name">Technologie</span><span class="niche-client">GEY Transact</span></div></div>
+        <div class="niche-tag"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="niche-info"><span class="niche-name">Éducation</span><span class="niche-client">Secteur émergent</span></div></div>
       </div>
     </div>
 
-    <!-- NICHES -->
-    <div class="reveal">
-      <h3 class="niches-title">Secteurs maîtrisés</h3>
-      <div class="niches-grid">
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="niche-name">Événementiel</div><div class="niche-client">Yabiso · Vougaland</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="niche-name">Santé &amp; Bien-être</div><div class="niche-client">Shilajit Sénégal</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="niche-name">Transport &amp; Logistique</div><div class="niche-client">Ndossy Services</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/></svg></div><div class="niche-name">Technologie</div><div class="niche-client">GEY Transact</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="niche-name">Éducation</div><div class="niche-client">&nbsp;</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="niche-name">Sport &amp; Fitness</div><div class="niche-client">Amajelo Judo</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="niche-name">Immobilier</div><div class="niche-client">Résidences Fadi</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div><div class="niche-name">Tourisme &amp; Voyage</div><div class="niche-client">Vougaland</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div><div class="niche-name">Restauration</div><div class="niche-client">Tasty Food · Pizza By Ange</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/></svg></div><div class="niche-name">Mode &amp; Beauté</div><div class="niche-client">Touch By Mj</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div><div class="niche-name">Finance &amp; Services</div><div class="niche-client">J-Transfert · GEY</div></div>
-        <div class="niche-card"><div class="niche-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div class="niche-name">E-commerce</div><div class="niche-client">J-Shopping</div></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2885,7 +3051,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 // ── SCROLL REVEAL + STAGGER ──
 window.addEventListener('DOMContentLoaded', () => {
-  ['.services-grid .service-card', '.niches-grid .niche-card', '.stat-block', '.design-card', '.affiche-item'].forEach(sel => {
+  ['.services-grid .service-card', '.niches-flow .niche-tag', '.stat-block', '.design-card', '.affiche-item'].forEach(sel => {
     document.querySelectorAll(sel).forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
   });
   const obs = new IntersectionObserver(entries => {
