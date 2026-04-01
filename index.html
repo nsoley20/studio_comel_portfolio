@@ -573,36 +573,77 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
 
 .projets-inner{max-width:1320px;margin:0 auto;position:relative;z-index:1}
 
+/* ── PROJETS HEADER — split dramatique ── */
+.projets-header{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:end;gap:40px;
+  margin-bottom:72px;
+}
+@media(max-width:640px){.projets-header{grid-template-columns:1fr;gap:20px}}
+.projets-header-left{}
+.projets-header-right{
+  display:flex;flex-direction:column;align-items:flex-end;
+  padding-bottom:6px;flex-shrink:0;
+}
+.projets-big-count{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(60px,8vw,100px);line-height:1;
+  background:linear-gradient(135deg,rgba(200,185,122,0.6) 0%,rgba(200,185,122,0.2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-0.02em;
+}
+.projets-big-label{
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(245,240,220,0.25);text-align:right;margin-top:-4px;
+}
+/* Ligne déco sous le header */
+.projets-divider{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:56px;
+}
+.projets-divider-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,185,122,0.2),transparent)}
+.projets-divider-dot{width:3px;height:3px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 8px var(--accent)}
+
+/* ── TABS ── */
 .tabs-bar{
   display:flex;gap:6px;
   margin-bottom:72px;
-  border-bottom:1px solid rgba(255,255,255,0.09);
+  border-bottom:1px solid rgba(255,255,255,0.07);
   padding-bottom:0;
   overflow-x:auto;
   -ms-overflow-style:none;scrollbar-width:none;
 }
 .tabs-bar::-webkit-scrollbar{display:none}
 .tab-btn{
-  font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;
+  font-family:'DM Sans',sans-serif;font-size:0.76rem;font-weight:600;
   letter-spacing:0.1em;text-transform:uppercase;
-  padding:13px 26px;border:none;
-  background:transparent;color:rgba(255,255,255,0.28);
+  padding:14px 22px;border:none;
+  background:transparent;color:rgba(255,255,255,0.3);
   cursor:pointer;border-bottom:2px solid transparent;
   transition:all 0.3s cubic-bezier(.16,1,.3,1);margin-bottom:-1px;white-space:nowrap;
   display:inline-flex;align-items:center;gap:9px;
   border-radius:6px 6px 0 0;
 }
 .tab-btn.active{
-  color:var(--accent);
+  color:var(--white);
   border-bottom-color:var(--accent);
-  background:linear-gradient(180deg,rgba(200,185,122,0.07) 0%,rgba(200,185,122,0.02) 100%);
-  box-shadow:0 -1px 0 rgba(200,185,122,0.12) inset;
+  background:linear-gradient(180deg,rgba(200,185,122,0.06) 0%,transparent 100%);
 }
-.tab-btn:hover:not(.active){color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.03)}
+.tab-btn:hover:not(.active){color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.03)}
 .tab-icon{
-  width:22px;height:22px;object-fit:contain;border-radius:5px;
+  width:20px;height:20px;object-fit:contain;border-radius:5px;
   flex-shrink:0;filter:drop-shadow(0 0 4px rgba(80,200,140,0.4));
 }
+/* Indicateur de contenu sur les tabs */
+.tab-count{
+  font-size:0.55rem;font-weight:700;
+  color:rgba(200,185,122,0.55);
+  background:rgba(200,185,122,0.08);
+  border:1px solid rgba(200,185,122,0.12);
+  border-radius:20px;padding:1px 7px;
+  letter-spacing:0.06em;
+}
+.tab-btn.active .tab-count{color:var(--accent);background:rgba(200,185,122,0.12);border-color:rgba(200,185,122,0.25)}
 .tab-content{display:none}
 .tab-content.active{display:block}
 
