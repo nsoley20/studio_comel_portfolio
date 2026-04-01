@@ -808,8 +808,8 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
 
 /* ─── TRUST ───────────────────────────────────────────────── */
 #trust{
-  background:var(--green-deep);
-  padding:80px 0;
+  background:linear-gradient(180deg,var(--green-dark) 0%,var(--green-deep) 100%);
+  padding:120px 0 0;
   overflow:hidden;
   position:relative;
 }
@@ -818,27 +818,115 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   position:absolute;
   inset:0;
   background:url("FILIGRANE 1.png") repeat;
-  background-size:260px;
-  opacity:0.04;
+  background-size:280px;
+  opacity:0.05;
   mix-blend-mode:screen;
   pointer-events:none;
 }
-.trust-inner{max-width:1320px;margin:0 auto;padding:0 32px 52px;text-align:center;position:relative;z-index:1}
-.trust-label{font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.25);letter-spacing:0.22em;text-transform:uppercase;display:block;margin-bottom:52px}
-.posters-container{overflow:hidden}
-.posters-row{overflow:hidden;margin-bottom:12px}
+/* Orb central dramatique */
+#trust::after{
+  content:'';
+  position:absolute;
+  width:900px;height:600px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(80,220,160,0.04) 0%,transparent 70%);
+  top:0;left:50%;transform:translateX(-50%);
+  pointer-events:none;
+}
+/* Header trust */
+.trust-header{
+  max-width:1320px;margin:0 auto;
+  padding:0 clamp(20px,4vw,80px) 72px;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
+}
+@media(max-width:600px){.trust-header{grid-template-columns:1fr;gap:24px}}
+.trust-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;
+  font-size:0.65rem;font-weight:600;color:var(--accent);letter-spacing:0.22em;text-transform:uppercase;
+  background:rgba(200,185,122,0.07);border:1px solid rgba(200,185,122,0.18);border-radius:50px;padding:7px 18px;
+}
+.trust-eyebrow::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0}
+.trust-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(44px,7vw,96px);
+  line-height:0.85;
+  background:linear-gradient(118deg,#ffffff 15%,rgba(200,185,122,0.88) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin:0;
+}
+.trust-subtitle{
+  font-size:0.74rem;font-weight:400;
+  color:rgba(245,240,220,0.35);
+  letter-spacing:0.14em;text-transform:uppercase;
+  margin-top:18px;
+}
+.trust-count-block{
+  display:flex;flex-direction:column;align-items:flex-end;
+  padding-bottom:4px;flex-shrink:0;
+}
+.trust-count-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(64px,9vw,120px);
+  line-height:1;
+  background:linear-gradient(135deg,var(--accent) 0%,rgba(200,185,122,0.45) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-0.02em;
+}
+.trust-count-label{
+  font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(245,240,220,0.28);margin-top:-4px;text-align:right;
+}
+/* Ligne décorative avec texte */
+.trust-rule{
+  max-width:1320px;margin:0 auto;
+  padding:0 clamp(20px,4vw,80px);
+  display:flex;align-items:center;gap:18px;
+  margin-bottom:64px;position:relative;z-index:1;
+}
+.trust-rule-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,185,122,0.28),transparent)}
+.trust-rule-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);flex-shrink:0}
+.trust-rule-text{font-size:0.58rem;letter-spacing:0.22em;color:rgba(245,240,220,0.2);text-transform:uppercase;white-space:nowrap}
+.trust-rule-line.right{background:linear-gradient(-90deg,rgba(200,185,122,0.28),transparent)}
+/* Fade masks sur les côtés du scroll */
+.posters-container{overflow:hidden;position:relative}
+.posters-container::before,.posters-container::after{
+  content:'';position:absolute;top:0;bottom:0;width:clamp(60px,8vw,140px);z-index:2;pointer-events:none;
+}
+.posters-container::before{left:0;background:linear-gradient(90deg,var(--green-deep),transparent)}
+.posters-container::after{right:0;background:linear-gradient(-90deg,var(--green-deep),transparent)}
+.posters-row{overflow:hidden;margin-bottom:14px}
 .posters-track{display:flex;width:max-content}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes scroll-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
-.posters-row-1 .posters-track{animation:scroll-left 38s linear infinite}
-.posters-row-2 .posters-track{animation:scroll-right 44s linear infinite}
+.posters-row-1 .posters-track{animation:scroll-left 42s linear infinite}
+.posters-row-2 .posters-track{animation:scroll-right 50s linear infinite}
 .posters-track:hover{animation-play-state:paused}
-.poster-item{width:155px;height:200px;flex-shrink:0;margin:0 6px;border-radius:14px;overflow:hidden;cursor:pointer;position:relative}
-.poster-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease,filter 0.3s ease}
-.poster-item:hover img{transform:scale(1.06);filter:brightness(1.1)}
-.poster-item-overlay{position:absolute;inset:0;background:rgba(4,15,13,0.85);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center}
+.poster-item{width:170px;height:240px;flex-shrink:0;margin:0 7px;border-radius:20px;overflow:hidden;cursor:pointer;position:relative;transition:transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s}
+.poster-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(200,185,122,0.2),0 0 40px rgba(200,185,122,0.08)}
+.poster-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(.16,1,.3,1);will-change:transform}
+.poster-item:hover img{transform:scale(1.08)}
+.poster-item-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(4,15,13,0.96) 100%);
+  opacity:0;transition:opacity 0.4s cubic-bezier(.16,1,.3,1);
+  display:flex;align-items:flex-end;padding:14px;
+}
 .poster-item:hover .poster-item-overlay{opacity:1}
-.poster-item-overlay span{font-family:'Bebas Neue',sans-serif;font-size:0.88rem;color:var(--beige);letter-spacing:0.1em;text-align:center;padding:8px}
+.poster-item-overlay span{
+  font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;
+  color:var(--beige);letter-spacing:0.08em;
+  background:rgba(200,185,122,0.12);
+  border:1px solid rgba(200,185,122,0.22);
+  border-radius:20px;padding:4px 12px;
+  backdrop-filter:blur(6px);
+}
+/* Bottom glow under the marquee rows */
+.trust-bottom-glow{
+  height:100px;
+  background:linear-gradient(0deg,var(--green-deep),transparent);
+  position:relative;z-index:1;
+  margin-top:-20px;
+}
 
 /* ─── RESOURCES ───────────────────────────────────────────── */
 #resources{
@@ -1250,26 +1338,8 @@ body::after{
 .about-title .name2{text-shadow:0 0 80px rgba(245,240,220,0.08)}
 .about-stat:hover{box-shadow:0 0 24px rgba(200,185,122,0.1) !important}
 
-/* ── TRUST — filigrane 1 plus visible ── */
-#trust::before{
-  background-size:220px !important;
-  opacity:0.07 !important;
-}
-/* LED orb dans trust */
-#trust::after{
-  content:'';
-  position:absolute;
-  width:600px;height:200px;
-  border-radius:50%;
-  background:radial-gradient(ellipse,rgba(11,61,50,0.5) 0%,transparent 70%);
-  bottom:0;left:50%;transform:translateX(-50%);
-  pointer-events:none;
-}
-/* Poster items — glow LED au hover */
-.poster-item:hover{
-  box-shadow:0 0 30px rgba(200,185,122,0.2) !important;
-  border-radius:4px;
-}
+/* ── TRUST — poster size overrides for artistic blocks ── */
+.poster-item{border-radius:20px!important}
 
 /* ── RESOURCES — filigrane 2 pleine largeur ── */
 #resources::before{
@@ -1382,7 +1452,7 @@ section{padding:var(--section-py) 0 !important}
 #stats-bar{padding:0 !important}
 #hero{padding:0 !important}
 .services-inner,.projets-inner,.devis-inner,.resources-inner,
-.trust-inner,.about-inner,.stats-inner{
+.about-inner,.stats-inner{
   padding-left:var(--px);
   padding-right:var(--px);
 }
@@ -1822,6 +1892,114 @@ footer .footer-inner,footer .footer-bottom{
 
 /* ── CM PROJECT separator ── */
 .cm-project{border-bottom:1px solid rgba(200,185,122,0.06)!important}
+
+/* ══════════════════════════════════════════════════════════════
+   ■  TEXTURE, AMBIANCE & EFFETS GLOBAUX
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── GRAIN texture sur hero (SVG inline filter) ── */
+#hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  opacity:0.032;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
+  mix-blend-mode:overlay;
+}
+
+/* ── DIVIDER artistique entre sections ── */
+.section-divider{
+  display:flex;align-items:center;gap:0;
+  overflow:hidden;height:1px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(200,185,122,0.06) 15%,
+    rgba(200,185,122,0.22) 35%,
+    rgba(200,185,122,0.08) 50%,
+    rgba(80,220,160,0.12) 65%,
+    rgba(200,185,122,0.06) 85%,
+    transparent 100%
+  );
+}
+
+/* ── AMBIENT GLOW entre sections ── */
+.section-glow-top{
+  position:absolute;top:0;left:0;right:0;
+  height:300px;pointer-events:none;
+  background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(80,220,160,0.04) 0%,transparent 100%);
+  z-index:0;
+}
+
+/* ── HERO — vignette overlay pour profondeur ── */
+.hero-vignette{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 40%,rgba(4,15,13,0.6) 100%);
+}
+
+/* ── STATS BAR — filet haut/bas dorés ── */
+#stats-bar{
+  border-top:1px solid rgba(200,185,122,0.06)!important;
+  border-bottom:1px solid rgba(200,185,122,0.06)!important;
+}
+
+/* ── SECTION ABOUT — fond légèrement contrasté ── */
+#about{background:linear-gradient(180deg,var(--green-dark) 0%,#060e0c 100%)}
+
+/* ── SCROLL indicator hero ── */
+.hero-scroll-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  z-index:5;
+}
+.hero-scroll-hint-line{
+  width:1px;height:40px;
+  background:linear-gradient(180deg,rgba(200,185,122,0.5),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:0.4;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1)}}
+.hero-scroll-hint-label{font-size:0.52rem;letter-spacing:0.3em;color:rgba(200,185,122,0.35);text-transform:uppercase}
+
+/* ── HERO TITLE — .line1 gradient lumineux ── */
+.hero-title .line1{
+  background:linear-gradient(118deg,#ffffff 20%,rgba(245,240,220,0.88) 100%)!important;
+  -webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;
+  filter:drop-shadow(0 0 40px rgba(255,255,255,0.08));
+}
+
+/* ── NAV scrolled — border dorée ── */
+nav.scrolled{border-bottom-color:rgba(200,185,122,0.08)!important}
+
+/* ── SECTION TITLES — effet de profondeur ── */
+.section-title{text-shadow:none}
+
+/* ── FORM wrapper — grain subtil ── */
+.form-wrapper::before{
+  content:'';position:absolute;inset:0;border-radius:32px;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:120px;opacity:0.018;pointer-events:none;z-index:0;
+}
+.form-wrapper{position:relative;overflow:hidden}
+
+/* ── PROJETS section — glow ambiant haut ── */
+#projets{position:relative}
+#projets::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:400px;
+  background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(200,185,122,0.03) 0%,transparent 100%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── About art rings — couleur plus subtile ── */
+.about-art-ring{border-color:rgba(200,185,122,0.08)!important}
+
+/* ── FOOTER glow ── */
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,185,122,0.18),transparent);
+}
+footer{position:relative;overflow:hidden}
 </style>
 </head>
 <body>
@@ -1869,6 +2047,7 @@ footer .footer-inner,footer .footer-bottom{
   <div class="hero-orb-2"></div>
   <div class="hero-orb-3"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
   <div class="hero-inner">
     <div class="hero-text reveal">
       <div class="hero-eyebrow">
@@ -2021,9 +2200,9 @@ footer .footer-inner,footer .footer-bottom{
           </div>
         </div>
         <div class="cm-visuals reveal-right">
-          <div class="cm-img top" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img src="yabiso ig.jpg.jpeg" alt="Yabiso Instagram"></div>
-          <div class="cm-img top" onclick="openLightbox('yabiso tiktok.jpg.jpeg')"><img src="yabiso tiktok.jpg.jpeg" alt="Yabiso TikTok"></div>
-          <div class="cm-img wide" onclick="openLightbox('yabiso stat.jpg.jpeg')"><img src="yabiso stat.jpg.jpeg" alt="Yabiso Stats"></div>
+          <div class="cm-img top" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso ig.jpg.jpeg" alt="Yabiso Instagram"></div>
+          <div class="cm-img top" onclick="openLightbox('yabiso tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso tiktok.jpg.jpeg" alt="Yabiso TikTok"></div>
+          <div class="cm-img wide" onclick="openLightbox('yabiso stat.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso stat.jpg.jpeg" alt="Yabiso Stats"></div>
         </div>
       </div>
       <div class="cm-project reverse">
@@ -2043,9 +2222,9 @@ footer .footer-inner,footer .footer-bottom{
           </div>
         </div>
         <div class="cm-visuals reveal-left">
-          <div class="cm-img top" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img src="debut insta shilajit.jpg.jpeg" alt="Shilajit Début"></div>
-          <div class="cm-img top" onclick="openLightbox('eid jpg.png')"><img src="eid jpg.png" alt="Shilajit Eid"></div>
-          <div class="cm-img wide" onclick="openLightbox('fin shilajit insta.jpg.jpeg')"><img src="fin shilajit insta.jpg.jpeg" alt="Shilajit Fin"></div>
+          <div class="cm-img top" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img loading="lazy" decoding="async" src="debut insta shilajit.jpg.jpeg" alt="Shilajit Début"></div>
+          <div class="cm-img top" onclick="openLightbox('eid jpg.png')"><img loading="lazy" decoding="async" src="eid jpg.png" alt="Shilajit Eid"></div>
+          <div class="cm-img wide" onclick="openLightbox('fin shilajit insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit insta.jpg.jpeg" alt="Shilajit Fin"></div>
         </div>
       </div>
       <div class="cm-project">
@@ -2065,9 +2244,9 @@ footer .footer-inner,footer .footer-bottom{
           </div>
         </div>
         <div class="cm-visuals reveal-right">
-          <div class="cm-img top" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img src="vouga fin insta.jpg.jpeg" alt="Vougaland Fin"></div>
-          <div class="cm-img top" onclick="openLightbox('Vouga debut insta.jpg.jpeg')"><img src="Vouga debut insta.jpg.jpeg" alt="Vougaland Début"></div>
-          <div class="cm-img wide" onclick="openLightbox('stat vouga ig.jpg.jpeg')"><img src="stat vouga ig.jpg.jpeg" alt="Vougaland Stats"></div>
+          <div class="cm-img top" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="vouga fin insta.jpg.jpeg" alt="Vougaland Fin"></div>
+          <div class="cm-img top" onclick="openLightbox('Vouga debut insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="Vouga debut insta.jpg.jpeg" alt="Vougaland Début"></div>
+          <div class="cm-img wide" onclick="openLightbox('stat vouga ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="stat vouga ig.jpg.jpeg" alt="Vougaland Stats"></div>
         </div>
       </div>
       <div class="cm-project reverse">
@@ -2087,9 +2266,9 @@ footer .footer-inner,footer .footer-bottom{
           </div>
         </div>
         <div class="cm-visuals reveal-left">
-          <div class="cm-img top" onclick="openLightbox('pba insta.png')"><img src="pba insta.png" alt="PBA Instagram"></div>
-          <div class="cm-img top" onclick="openLightbox('pba fbk.jpg.jpeg')"><img src="pba fbk.jpg.jpeg" alt="PBA Facebook"></div>
-          <div class="cm-img wide" onclick="openLightbox('stat pba insta.jpg.jpeg')"><img src="stat pba insta.jpg.jpeg" alt="PBA Stats"></div>
+          <div class="cm-img top" onclick="openLightbox('pba insta.png')"><img loading="lazy" decoding="async" src="pba insta.png" alt="PBA Instagram"></div>
+          <div class="cm-img top" onclick="openLightbox('pba fbk.jpg.jpeg')"><img loading="lazy" decoding="async" src="pba fbk.jpg.jpeg" alt="PBA Facebook"></div>
+          <div class="cm-img wide" onclick="openLightbox('stat pba insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="stat pba insta.jpg.jpeg" alt="PBA Stats"></div>
         </div>
       </div>
     </div>
@@ -2127,20 +2306,20 @@ footer .footer-inner,footer .footer-bottom{
     <!-- AFFICHES TAB -->
     <div id="tab-affiches" class="tab-content">
       <div class="affiches-masonry">
-        <div class="affiche-item" onclick="openLightbox('ndossy jpg.png')"><img src="ndossy jpg.png" alt="Ndossy Services"><div class="affiche-overlay"><div class="affiche-overlay-client">Ndossy Services</div><div class="affiche-overlay-type">Grille Tarifaire</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('judo jpg.png')"><img src="judo jpg.png" alt="Amajelo Judo"><div class="affiche-overlay"><div class="affiche-overlay-client">Amajelo Judo</div><div class="affiche-overlay-type">Affiche Événement</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="affiche-overlay"><div class="affiche-overlay-client">MK Cuisine</div><div class="affiche-overlay-type">Offre Spéciale</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('J SHOP.png')"><img src="J SHOP.png" alt="J-Shopping"><div class="affiche-overlay"><div class="affiche-overlay-client">J-Shopping</div><div class="affiche-overlay-type">Post Commercial</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('korite jpg.png')"><img src="korite jpg.png" alt="Résidences Fadi"><div class="affiche-overlay"><div class="affiche-overlay-client">Résidences Fadi</div><div class="affiche-overlay-type">Post Festif</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('jt png.png')"><img src="jt png.png" alt="J-Transfert"><div class="affiche-overlay"><div class="affiche-overlay-client">J-Transfert</div><div class="affiche-overlay-type">Post Promotionnel</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('gey jpg.png')"><img src="gey jpg.png" alt="GEY Transact"><div class="affiche-overlay"><div class="affiche-overlay-client">GEY Transact</div><div class="affiche-overlay-type">Avis Clientèle</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('jeu c.png')"><img src="jeu c.png" alt="Touch By Mj"><div class="affiche-overlay"><div class="affiche-overlay-client">Touch By Mj</div><div class="affiche-overlay-type">Jeu Concours</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('Shilajit jpg.png')"><img src="Shilajit jpg.png" alt="Shilajit Sénégal"><div class="affiche-overlay"><div class="affiche-overlay-client">Shilajit Sénégal</div><div class="affiche-overlay-type">Post Produit</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('eid jpg.png')"><img src="eid jpg.png" alt="Shilajit Sénégal Eid"><div class="affiche-overlay"><div class="affiche-overlay-client">Shilajit Sénégal</div><div class="affiche-overlay-type">Post Eid</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('final.LIVRAISON.jpg.jpeg')"><img src="final.LIVRAISON.jpg.jpeg" alt="Tasty Food Livraison"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Zone Livraison</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('Crepes,,,.jpg.jpeg')"><img src="Crepes,,,.jpg.jpeg" alt="Tasty Food Crêpes"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Menu Crêpes</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img src="NOEL TASTY LAST FINAL .png" alt="Tasty Food Noël"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Post Noël</div></div></div>
-        <div class="affiche-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty Food Pub"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Pub Officielle</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('ndossy jpg.png')"><img loading="lazy" decoding="async" src="ndossy jpg.png" alt="Ndossy Services"><div class="affiche-overlay"><div class="affiche-overlay-client">Ndossy Services</div><div class="affiche-overlay-type">Grille Tarifaire</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('judo jpg.png')"><img loading="lazy" decoding="async" src="judo jpg.png" alt="Amajelo Judo"><div class="affiche-overlay"><div class="affiche-overlay-client">Amajelo Judo</div><div class="affiche-overlay-type">Affiche Événement</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img loading="lazy" decoding="async" src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="affiche-overlay"><div class="affiche-overlay-client">MK Cuisine</div><div class="affiche-overlay-type">Offre Spéciale</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('J SHOP.png')"><img loading="lazy" decoding="async" src="J SHOP.png" alt="J-Shopping"><div class="affiche-overlay"><div class="affiche-overlay-client">J-Shopping</div><div class="affiche-overlay-type">Post Commercial</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('korite jpg.png')"><img loading="lazy" decoding="async" src="korite jpg.png" alt="Résidences Fadi"><div class="affiche-overlay"><div class="affiche-overlay-client">Résidences Fadi</div><div class="affiche-overlay-type">Post Festif</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('jt png.png')"><img loading="lazy" decoding="async" src="jt png.png" alt="J-Transfert"><div class="affiche-overlay"><div class="affiche-overlay-client">J-Transfert</div><div class="affiche-overlay-type">Post Promotionnel</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('gey jpg.png')"><img loading="lazy" decoding="async" src="gey jpg.png" alt="GEY Transact"><div class="affiche-overlay"><div class="affiche-overlay-client">GEY Transact</div><div class="affiche-overlay-type">Avis Clientèle</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('jeu c.png')"><img loading="lazy" decoding="async" src="jeu c.png" alt="Touch By Mj"><div class="affiche-overlay"><div class="affiche-overlay-client">Touch By Mj</div><div class="affiche-overlay-type">Jeu Concours</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('Shilajit jpg.png')"><img loading="lazy" decoding="async" src="Shilajit jpg.png" alt="Shilajit Sénégal"><div class="affiche-overlay"><div class="affiche-overlay-client">Shilajit Sénégal</div><div class="affiche-overlay-type">Post Produit</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('eid jpg.png')"><img loading="lazy" decoding="async" src="eid jpg.png" alt="Shilajit Sénégal Eid"><div class="affiche-overlay"><div class="affiche-overlay-client">Shilajit Sénégal</div><div class="affiche-overlay-type">Post Eid</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('final.LIVRAISON.jpg.jpeg')"><img loading="lazy" decoding="async" src="final.LIVRAISON.jpg.jpeg" alt="Tasty Food Livraison"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Zone Livraison</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('Crepes,,,.jpg.jpeg')"><img loading="lazy" decoding="async" src="Crepes,,,.jpg.jpeg" alt="Tasty Food Crêpes"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Menu Crêpes</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img loading="lazy" decoding="async" src="NOEL TASTY LAST FINAL .png" alt="Tasty Food Noël"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Post Noël</div></div></div>
+        <div class="affiche-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img loading="lazy" decoding="async" src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty Food Pub"><div class="affiche-overlay"><div class="affiche-overlay-client">Tasty Food</div><div class="affiche-overlay-type">Pub Officielle</div></div></div>
       </div>
     </div>
 
@@ -2159,6 +2338,7 @@ footer .footer-inner,footer .footer-bottom{
 <!-- LED STRIP -->
 <div class="led-strip"></div>
 
+<div class="section-divider"></div>
 <!-- ABOUT -->
 <section id="about">
   <div class="about-fil1"></div>
@@ -2216,61 +2396,78 @@ footer .footer-inner,footer .footer-bottom{
 
 <!-- TRUST -->
 <section id="trust">
-  <div class="trust-inner">
-    <span class="trust-label">Ils m'ont fait confiance</span>
+  <div class="trust-header reveal">
+    <div class="trust-header-left">
+      <span class="trust-eyebrow">Références clients</span>
+      <h2 class="trust-title">ILS M'ONT<br>FAIT CONFIANCE</h2>
+      <p class="trust-subtitle">Des marques qui nous ont choisis pour raconter leur histoire</p>
+    </div>
+    <div class="trust-count-block">
+      <span class="trust-count-num">20+</span>
+      <span class="trust-count-label">Marques<br>accompagnées</span>
+    </div>
+  </div>
+  <div class="trust-rule reveal">
+    <div class="trust-rule-line"></div>
+    <div class="trust-rule-dot"></div>
+    <span class="trust-rule-text">Projets réalisés · Clients satisfaits · Impact mesuré</span>
+    <div class="trust-rule-dot"></div>
+    <div class="trust-rule-line right"></div>
   </div>
   <div class="posters-container">
     <div class="posters-row posters-row-1">
       <div class="posters-track">
-        <div class="poster-item" onclick="openLightbox('ndossy jpg.png')"><img src="ndossy jpg.png" alt="Ndossy"><div class="poster-item-overlay"><span>Ndossy Services</span></div></div>
-        <div class="poster-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="poster-item-overlay"><span>MK Cuisine</span></div></div>
-        <div class="poster-item" onclick="openLightbox('judo jpg.png')"><img src="judo jpg.png" alt="Amajelo Judo"><div class="poster-item-overlay"><span>Amajelo Judo</span></div></div>
-        <div class="poster-item" onclick="openLightbox('J SHOP.png')"><img src="J SHOP.png" alt="J-Shopping"><div class="poster-item-overlay"><span>J-Shopping</span></div></div>
-        <div class="poster-item" onclick="openLightbox('korite jpg.png')"><img src="korite jpg.png" alt="Résidences Fadi"><div class="poster-item-overlay"><span>Résidences Fadi</span></div></div>
-        <div class="poster-item" onclick="openLightbox('jt png.png')"><img src="jt png.png" alt="J-Transfert"><div class="poster-item-overlay"><span>J-Transfert</span></div></div>
-        <div class="poster-item" onclick="openLightbox('gey jpg.png')"><img src="gey jpg.png" alt="GEY Transact"><div class="poster-item-overlay"><span>GEY Transact</span></div></div>
-        <div class="poster-item" onclick="openLightbox('jeu c.png')"><img src="jeu c.png" alt="Touch By Mj"><div class="poster-item-overlay"><span>Touch By Mj</span></div></div>
-        <div class="poster-item" onclick="openLightbox('Shilajit jpg.png')"><img src="Shilajit jpg.png" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
-        <div class="poster-item" onclick="openLightbox('eid jpg.png')"><img src="eid jpg.png" alt="Eid"><div class="poster-item-overlay"><span>Shilajit · Eid</span></div></div>
-        <div class="poster-item" onclick="openLightbox('ndossy jpg.png')"><img src="ndossy jpg.png" alt="Ndossy"><div class="poster-item-overlay"><span>Ndossy Services</span></div></div>
-        <div class="poster-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="poster-item-overlay"><span>MK Cuisine</span></div></div>
-        <div class="poster-item" onclick="openLightbox('judo jpg.png')"><img src="judo jpg.png" alt="Amajelo Judo"><div class="poster-item-overlay"><span>Amajelo Judo</span></div></div>
-        <div class="poster-item" onclick="openLightbox('J SHOP.png')"><img src="J SHOP.png" alt="J-Shopping"><div class="poster-item-overlay"><span>J-Shopping</span></div></div>
-        <div class="poster-item" onclick="openLightbox('korite jpg.png')"><img src="korite jpg.png" alt="Résidences Fadi"><div class="poster-item-overlay"><span>Résidences Fadi</span></div></div>
-        <div class="poster-item" onclick="openLightbox('jt png.png')"><img src="jt png.png" alt="J-Transfert"><div class="poster-item-overlay"><span>J-Transfert</span></div></div>
-        <div class="poster-item" onclick="openLightbox('gey jpg.png')"><img src="gey jpg.png" alt="GEY Transact"><div class="poster-item-overlay"><span>GEY Transact</span></div></div>
-        <div class="poster-item" onclick="openLightbox('jeu c.png')"><img src="jeu c.png" alt="Touch By Mj"><div class="poster-item-overlay"><span>Touch By Mj</span></div></div>
-        <div class="poster-item" onclick="openLightbox('Shilajit jpg.png')"><img src="Shilajit jpg.png" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
-        <div class="poster-item" onclick="openLightbox('eid jpg.png')"><img src="eid jpg.png" alt="Eid"><div class="poster-item-overlay"><span>Shilajit · Eid</span></div></div>
+        <div class="poster-item" onclick="openLightbox('ndossy jpg.png')"><img loading="lazy" decoding="async" src="ndossy jpg.png" alt="Ndossy"><div class="poster-item-overlay"><span>Ndossy Services</span></div></div>
+        <div class="poster-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img loading="lazy" decoding="async" src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="poster-item-overlay"><span>MK Cuisine</span></div></div>
+        <div class="poster-item" onclick="openLightbox('judo jpg.png')"><img loading="lazy" decoding="async" src="judo jpg.png" alt="Amajelo Judo"><div class="poster-item-overlay"><span>Amajelo Judo</span></div></div>
+        <div class="poster-item" onclick="openLightbox('J SHOP.png')"><img loading="lazy" decoding="async" src="J SHOP.png" alt="J-Shopping"><div class="poster-item-overlay"><span>J-Shopping</span></div></div>
+        <div class="poster-item" onclick="openLightbox('korite jpg.png')"><img loading="lazy" decoding="async" src="korite jpg.png" alt="Résidences Fadi"><div class="poster-item-overlay"><span>Résidences Fadi</span></div></div>
+        <div class="poster-item" onclick="openLightbox('jt png.png')"><img loading="lazy" decoding="async" src="jt png.png" alt="J-Transfert"><div class="poster-item-overlay"><span>J-Transfert</span></div></div>
+        <div class="poster-item" onclick="openLightbox('gey jpg.png')"><img loading="lazy" decoding="async" src="gey jpg.png" alt="GEY Transact"><div class="poster-item-overlay"><span>GEY Transact</span></div></div>
+        <div class="poster-item" onclick="openLightbox('jeu c.png')"><img loading="lazy" decoding="async" src="jeu c.png" alt="Touch By Mj"><div class="poster-item-overlay"><span>Touch By Mj</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Shilajit jpg.png')"><img loading="lazy" decoding="async" src="Shilajit jpg.png" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('eid jpg.png')"><img loading="lazy" decoding="async" src="eid jpg.png" alt="Eid"><div class="poster-item-overlay"><span>Shilajit · Eid</span></div></div>
+        <div class="poster-item" onclick="openLightbox('ndossy jpg.png')"><img loading="lazy" decoding="async" src="ndossy jpg.png" alt="Ndossy"><div class="poster-item-overlay"><span>Ndossy Services</span></div></div>
+        <div class="poster-item" onclick="openLightbox('MK CUISINE FOOD.png')"><img loading="lazy" decoding="async" src="MK CUISINE FOOD.png" alt="MK Cuisine"><div class="poster-item-overlay"><span>MK Cuisine</span></div></div>
+        <div class="poster-item" onclick="openLightbox('judo jpg.png')"><img loading="lazy" decoding="async" src="judo jpg.png" alt="Amajelo Judo"><div class="poster-item-overlay"><span>Amajelo Judo</span></div></div>
+        <div class="poster-item" onclick="openLightbox('J SHOP.png')"><img loading="lazy" decoding="async" src="J SHOP.png" alt="J-Shopping"><div class="poster-item-overlay"><span>J-Shopping</span></div></div>
+        <div class="poster-item" onclick="openLightbox('korite jpg.png')"><img loading="lazy" decoding="async" src="korite jpg.png" alt="Résidences Fadi"><div class="poster-item-overlay"><span>Résidences Fadi</span></div></div>
+        <div class="poster-item" onclick="openLightbox('jt png.png')"><img loading="lazy" decoding="async" src="jt png.png" alt="J-Transfert"><div class="poster-item-overlay"><span>J-Transfert</span></div></div>
+        <div class="poster-item" onclick="openLightbox('gey jpg.png')"><img loading="lazy" decoding="async" src="gey jpg.png" alt="GEY Transact"><div class="poster-item-overlay"><span>GEY Transact</span></div></div>
+        <div class="poster-item" onclick="openLightbox('jeu c.png')"><img loading="lazy" decoding="async" src="jeu c.png" alt="Touch By Mj"><div class="poster-item-overlay"><span>Touch By Mj</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Shilajit jpg.png')"><img loading="lazy" decoding="async" src="Shilajit jpg.png" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('eid jpg.png')"><img loading="lazy" decoding="async" src="eid jpg.png" alt="Eid"><div class="poster-item-overlay"><span>Shilajit · Eid</span></div></div>
       </div>
     </div>
     <div class="posters-row posters-row-2">
       <div class="posters-track">
-        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img src="pba insta.png" alt="PBA"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
-        <div class="poster-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img src="NOEL TASTY LAST FINAL .png" alt="Tasty Noël"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
-        <div class="poster-item" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img src="yabiso ig.jpg.jpeg" alt="Yabiso"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
-        <div class="poster-item" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img src="vouga fin insta.jpg.jpeg" alt="Vougaland"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
-        <div class="poster-item" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img src="debut insta shilajit.jpg.jpeg" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
-        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
-        <div class="poster-item" onclick="openLightbox('La carte TASTY.png')"><img src="La carte TASTY.png" alt="Tasty Carte"><div class="poster-item-overlay"><span>La Carte Tasty</span></div></div>
-        <div class="poster-item" onclick="openLightbox('fin shilajit tiktok.jpg.jpeg')"><img src="fin shilajit tiktok.jpg.jpeg" alt="Shilajit TikTok"><div class="poster-item-overlay"><span>Shilajit TikTok</span></div></div>
-        <div class="poster-item" onclick="openLightbox('pba fbk.jpg.jpeg')"><img src="pba fbk.jpg.jpeg" alt="PBA Facebook"><div class="poster-item-overlay"><span>Pizza By Ange FB</span></div></div>
-        <div class="poster-item" onclick="openLightbox('fin tiktok vouga.jpg.jpeg')"><img src="fin tiktok vouga.jpg.jpeg" alt="Vougaland TikTok"><div class="poster-item-overlay"><span>Vougaland TikTok</span></div></div>
-        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img src="pba insta.png" alt="PBA"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
-        <div class="poster-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img src="NOEL TASTY LAST FINAL .png" alt="Tasty Noël"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
-        <div class="poster-item" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img src="yabiso ig.jpg.jpeg" alt="Yabiso"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
-        <div class="poster-item" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img src="vouga fin insta.jpg.jpeg" alt="Vougaland"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
-        <div class="poster-item" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img src="debut insta shilajit.jpg.jpeg" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
-        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
-        <div class="poster-item" onclick="openLightbox('La carte TASTY.png')"><img src="La carte TASTY.png" alt="Tasty Carte"><div class="poster-item-overlay"><span>La Carte Tasty</span></div></div>
-        <div class="poster-item" onclick="openLightbox('fin shilajit tiktok.jpg.jpeg')"><img src="fin shilajit tiktok.jpg.jpeg" alt="Shilajit TikTok"><div class="poster-item-overlay"><span>Shilajit TikTok</span></div></div>
-        <div class="poster-item" onclick="openLightbox('pba fbk.jpg.jpeg')"><img src="pba fbk.jpg.jpeg" alt="PBA Facebook"><div class="poster-item-overlay"><span>Pizza By Ange FB</span></div></div>
-        <div class="poster-item" onclick="openLightbox('fin tiktok vouga.jpg.jpeg')"><img src="fin tiktok vouga.jpg.jpeg" alt="Vougaland TikTok"><div class="poster-item-overlay"><span>Vougaland TikTok</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img loading="lazy" decoding="async" src="pba insta.png" alt="PBA"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
+        <div class="poster-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img loading="lazy" decoding="async" src="NOEL TASTY LAST FINAL .png" alt="Tasty Noël"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso ig.jpg.jpeg" alt="Yabiso"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
+        <div class="poster-item" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="vouga fin insta.jpg.jpeg" alt="Vougaland"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
+        <div class="poster-item" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img loading="lazy" decoding="async" src="debut insta shilajit.jpg.jpeg" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img loading="lazy" decoding="async" src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('La carte TASTY.png')"><img loading="lazy" decoding="async" src="La carte TASTY.png" alt="Tasty Carte"><div class="poster-item-overlay"><span>La Carte Tasty</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin shilajit tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit tiktok.jpg.jpeg" alt="Shilajit TikTok"><div class="poster-item-overlay"><span>Shilajit TikTok</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba fbk.jpg.jpeg')"><img loading="lazy" decoding="async" src="pba fbk.jpg.jpeg" alt="PBA Facebook"><div class="poster-item-overlay"><span>Pizza By Ange FB</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin tiktok vouga.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin tiktok vouga.jpg.jpeg" alt="Vougaland TikTok"><div class="poster-item-overlay"><span>Vougaland TikTok</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img loading="lazy" decoding="async" src="pba insta.png" alt="PBA"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
+        <div class="poster-item" onclick="openLightbox('NOEL TASTY LAST FINAL .png')"><img loading="lazy" decoding="async" src="NOEL TASTY LAST FINAL .png" alt="Tasty Noël"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('yabiso ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso ig.jpg.jpeg" alt="Yabiso"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
+        <div class="poster-item" onclick="openLightbox('vouga fin insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="vouga fin insta.jpg.jpeg" alt="Vougaland"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
+        <div class="poster-item" onclick="openLightbox('debut insta shilajit.jpg.jpeg')"><img loading="lazy" decoding="async" src="debut insta shilajit.jpg.jpeg" alt="Shilajit"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img loading="lazy" decoding="async" src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('La carte TASTY.png')"><img loading="lazy" decoding="async" src="La carte TASTY.png" alt="Tasty Carte"><div class="poster-item-overlay"><span>La Carte Tasty</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin shilajit tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit tiktok.jpg.jpeg" alt="Shilajit TikTok"><div class="poster-item-overlay"><span>Shilajit TikTok</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba fbk.jpg.jpeg')"><img loading="lazy" decoding="async" src="pba fbk.jpg.jpeg" alt="PBA Facebook"><div class="poster-item-overlay"><span>Pizza By Ange FB</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin tiktok vouga.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin tiktok vouga.jpg.jpeg" alt="Vougaland TikTok"><div class="poster-item-overlay"><span>Vougaland TikTok</span></div></div>
       </div>
     </div>
   </div>
+  <div class="trust-bottom-glow"></div>
 </section>
 
+<div class="section-divider"></div>
 <!-- RESOURCES -->
 <section id="resources">
   <div class="resources-inner">
