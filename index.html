@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Studio Com'El — Agence de Communication Digitale · Dakar</title>
+<meta name="description" content="Studio Com'El, agence de communication digitale à Dakar. Community management, conception graphique et visuels pour les marques africaines. Plus de 20 marques accompagnées.">
+<meta name="keywords" content="agence communication digitale Dakar, community management Sénégal, conception graphique Afrique, Studio Com'El">
+<meta name="author" content="Studio Com'El">
+<meta name="robots" content="index, follow">
+<!-- Open Graph — partage WhatsApp / Instagram / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Studio Com'El — Agence de Communication Digitale · Dakar">
+<meta property="og:description" content="Community management, conception graphique et visuels percutants pour les marques africaines. Plus de 20 marques accompagnées à Dakar.">
+<meta property="og:image" content="icone fond vert.PNG">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Studio Com'El">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Studio Com'El — Agence de Communication Digitale · Dakar">
+<meta name="twitter:description" content="Community management, conception graphique et visuels percutants pour les marques africaines.">
+<meta name="twitter:image" content="icone fond vert.PNG">
 <link rel="icon" type="image/png" href="icone fond vert.PNG">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +40,16 @@
   --led-green:rgba(80,220,160,0.18);
   --led-gold:rgba(220,190,100,0.22);
   --led-teal:rgba(60,200,180,0.15);
+  /* ── Système z-index ordonné ── */
+  --z-base:1;
+  --z-nav:1000;
+  --z-mobile-nav:999;
+  --z-lightbox:9990;
+  --z-cursor-ring:99998;
+  --z-cursor-dot:99999;
+  --z-loader:100000;
+  /* ── Couleur erreur formulaire ── */
+  --error:#e07070;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -62,7 +88,7 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
 .nav-brand img{height:36px;width:auto;object-fit:contain}
 .nav-brand span{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--beige);letter-spacing:0.08em;white-space:nowrap}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
-.nav-links a{font-size:0.8rem;font-weight:500;color:rgba(245,240,220,0.55);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;position:relative}
+.nav-links a{font-size:0.8rem;font-weight:500;color:rgba(245,240,220,0.72);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
 .nav-links a:hover{color:var(--accent)}
 .nav-links a:hover::after{width:100%}
@@ -71,8 +97,21 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
 .nav-cta:hover::before{transform:translateX(0)}
 .nav-cta:hover{color:var(--green-dark)}
 .nav-cta span{position:relative;z-index:1}
-.nav-menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;min-width:44px;min-height:44px;align-items:center;justify-content:center;background:none;border:none;border-radius:8px;transition:background 0.2s}
+.nav-menu-btn:hover{background:rgba(200,185,122,0.08)}
 .nav-menu-btn span{display:block;width:24px;height:2px;background:var(--beige);border-radius:2px;transition:all 0.3s}
+/* Mobile nav — slide-down animé */
+.nav-links.mobile-open{
+  display:flex!important;flex-direction:column;
+  position:absolute;top:100%;left:0;right:0;
+  background:rgba(4,15,13,0.97);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:28px 32px;gap:20px;
+  border-bottom:1px solid rgba(200,185,122,0.12);
+  z-index:var(--z-mobile-nav);
+  animation:mobileNavIn 0.32s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes mobileNavIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─── HERO ─────────────────────────────────────────────────── */
 #hero{position:relative;min-height:100vh;background:var(--green-deep);display:flex;align-items:center;overflow:hidden}
@@ -1111,21 +1150,28 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
 .form-step-sub{font-size:0.8rem;color:rgba(255,255,255,0.35);margin-bottom:32px}
 .form-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px}
 .form-option{
-  padding:18px 20px;
+  padding:18px 20px;min-height:54px;
   border:1px solid rgba(255,255,255,0.07);
   border-radius:14px;cursor:pointer;
   transition:all 0.25s;
-  font-size:0.84rem;color:rgba(255,255,255,0.55);font-weight:500;
+  font-size:0.84rem;color:rgba(255,255,255,0.62);font-weight:500;
   background:rgba(255,255,255,0.02);
+  display:flex;align-items:center;
 }
-.form-option:hover{border-color:rgba(200,185,122,0.3);color:var(--white);background:rgba(200,185,122,0.04)}
+.form-option:hover,.form-option:focus-visible{border-color:rgba(200,185,122,0.3);color:var(--white);background:rgba(200,185,122,0.04);outline:none}
 .form-option.selected{border-color:var(--accent);background:rgba(200,185,122,0.07);color:var(--white);box-shadow:0 0 20px rgba(200,185,122,0.1)}
 .form-textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--white);resize:vertical;min-height:140px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;margin-bottom:36px}
 .form-textarea:focus{border-color:rgba(200,185,122,0.4);box-shadow:0 0 20px rgba(200,185,122,0.08)}
 .form-textarea::placeholder{color:rgba(255,255,255,0.2)}
-.form-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--white);outline:none;transition:border-color 0.2s,box-shadow 0.2s;margin-bottom:12px}
+.form-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--white);outline:none;transition:border-color 0.2s,box-shadow 0.2s;margin-bottom:4px;min-height:48px}
 .form-input:focus{border-color:rgba(200,185,122,0.4);box-shadow:0 0 20px rgba(200,185,122,0.08)}
 .form-input::placeholder{color:rgba(255,255,255,0.2)}
+.form-input.has-error{border-color:var(--error)!important;box-shadow:0 0 0 3px rgba(224,112,112,0.12)!important}
+.form-field{margin-bottom:12px}
+.form-field-label{display:block;font-size:0.72rem;font-weight:500;color:rgba(245,240,220,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px}
+.form-error-msg{display:none;font-size:0.72rem;color:var(--error);margin-top:4px;margin-bottom:4px;padding-left:4px;animation:errIn 0.25s ease}
+.form-error-msg.visible{display:block}
+@keyframes errIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 .form-nav-prev{background:transparent;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;font-size:0.8rem;padding:12px 24px;border-radius:50px;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em}
 .form-nav-prev:hover{border-color:rgba(255,255,255,0.25);color:var(--white)}
@@ -1666,18 +1712,21 @@ footer .footer-inner,footer .footer-bottom{
   opacity:0;
   transform:translateY(36px) scale(0.975);
   transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
+  will-change:transform,opacity;
 }
-.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1);will-change:auto}
 .reveal-left{
   opacity:0;transform:translateX(-36px) scale(0.975);
   transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
+  will-change:transform,opacity;
 }
-.reveal-left.visible{opacity:1;transform:translateX(0) scale(1)}
+.reveal-left.visible{opacity:1;transform:translateX(0) scale(1);will-change:auto}
 .reveal-right{
   opacity:0;transform:translateX(36px) scale(0.975);
   transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);
+  will-change:transform,opacity;
 }
-.reveal-right.visible{opacity:1;transform:translateX(0) scale(1)}
+.reveal-right.visible{opacity:1;transform:translateX(0) scale(1);will-change:auto}
 
 /* ── BOUTONS ARTISTIQUES ── */
 /* btn-primary */
@@ -2032,9 +2081,9 @@ footer{position:relative;overflow:hidden}
       <li><a href="#devis">Contact</a></li>
     </ul>
     <a href="#devis" class="nav-cta"><span>Demander un devis</span></a>
-    <div class="nav-menu-btn" onclick="toggleMobileNav()">
+    <button class="nav-menu-btn" onclick="toggleMobileNav()" aria-label="Ouvrir le menu" aria-expanded="false" id="nav-menu-btn">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -2548,10 +2597,10 @@ footer{position:relative;overflow:hidden}
           <div class="form-step-title">Quel service vous intéresse ?</div>
           <div class="form-step-sub">Sélectionnez le service qui correspond à votre besoin.</div>
           <div class="form-options">
-            <div class="form-option" data-val="gestion-rs" onclick="selectOption(this,'service')">Gestion des réseaux sociaux</div>
-            <div class="form-option" data-val="conception" onclick="selectOption(this,'service')">Conception graphique</div>
-            <div class="form-option" data-val="audit" onclick="selectOption(this,'service')">Audit des réseaux sociaux</div>
-            <div class="form-option" data-val="strategie" onclick="selectOption(this,'service')">Stratégie digitale</div>
+            <div class="form-option" role="button" tabindex="0" data-val="gestion-rs" onclick="selectOption(this,'service')">Gestion des réseaux sociaux</div>
+            <div class="form-option" role="button" tabindex="0" data-val="conception" onclick="selectOption(this,'service')">Conception graphique</div>
+            <div class="form-option" role="button" tabindex="0" data-val="audit" onclick="selectOption(this,'service')">Audit des réseaux sociaux</div>
+            <div class="form-option" role="button" tabindex="0" data-val="strategie" onclick="selectOption(this,'service')">Stratégie digitale</div>
           </div>
           <div class="form-nav"><span></span><button class="form-nav-next" onclick="nextStep(1)">Suivant →</button></div>
         </div>
@@ -2559,10 +2608,10 @@ footer{position:relative;overflow:hidden}
           <div class="form-step-title">Quel est votre objectif ?</div>
           <div class="form-step-sub">Choisissez l'objectif principal de votre projet.</div>
           <div class="form-options">
-            <div class="form-option" data-val="lancement" onclick="selectOption(this,'objectif')">Lancement de marque</div>
-            <div class="form-option" data-val="croissance" onclick="selectOption(this,'objectif')">Croissance de communauté</div>
-            <div class="form-option" data-val="refonte" onclick="selectOption(this,'objectif')">Refonte visuelle</div>
-            <div class="form-option" data-val="contenu" onclick="selectOption(this,'objectif')">Création de contenu</div>
+            <div class="form-option" role="button" tabindex="0" data-val="lancement" onclick="selectOption(this,'objectif')">Lancement de marque</div>
+            <div class="form-option" role="button" tabindex="0" data-val="croissance" onclick="selectOption(this,'objectif')">Croissance de communauté</div>
+            <div class="form-option" role="button" tabindex="0" data-val="refonte" onclick="selectOption(this,'objectif')">Refonte visuelle</div>
+            <div class="form-option" role="button" tabindex="0" data-val="contenu" onclick="selectOption(this,'objectif')">Création de contenu</div>
           </div>
           <div class="form-nav"><button class="form-nav-prev" onclick="prevStep(2)">← Retour</button><button class="form-nav-next" onclick="nextStep(2)">Suivant →</button></div>
         </div>
@@ -2576,10 +2625,10 @@ footer{position:relative;overflow:hidden}
           <div class="form-step-title">Quel est votre délai ?</div>
           <div class="form-step-sub">Pour quelle échéance souhaitez-vous démarrer ?</div>
           <div class="form-options">
-            <div class="form-option" data-val="urgent" onclick="selectOption(this,'delai')">Urgent (cette semaine)</div>
-            <div class="form-option" data-val="2-4sem" onclick="selectOption(this,'delai')">2 à 4 semaines</div>
-            <div class="form-option" data-val="1mois+" onclick="selectOption(this,'delai')">1 mois et plus</div>
-            <div class="form-option" data-val="flexible" onclick="selectOption(this,'delai')">Flexible / À définir</div>
+            <div class="form-option" role="button" tabindex="0" data-val="urgent" onclick="selectOption(this,'delai')">Urgent (cette semaine)</div>
+            <div class="form-option" role="button" tabindex="0" data-val="2-4sem" onclick="selectOption(this,'delai')">2 à 4 semaines</div>
+            <div class="form-option" role="button" tabindex="0" data-val="1mois+" onclick="selectOption(this,'delai')">1 mois et plus</div>
+            <div class="form-option" role="button" tabindex="0" data-val="flexible" onclick="selectOption(this,'delai')">Flexible / À définir</div>
           </div>
           <div class="form-nav"><button class="form-nav-prev" onclick="prevStep(4)">← Retour</button><button class="form-nav-next" onclick="nextStep(4)">Suivant →</button></div>
         </div>
@@ -2587,19 +2636,31 @@ footer{position:relative;overflow:hidden}
           <div class="form-step-title">Quel est votre budget ?</div>
           <div class="form-step-sub">Sélectionnez la fourchette qui correspond à votre projet.</div>
           <div class="form-options">
-            <div class="form-option" data-val="<50k" onclick="selectOption(this,'budget')">Moins de 50 000 FCFA</div>
-            <div class="form-option" data-val="50-150k" onclick="selectOption(this,'budget')">50 000 – 150 000 FCFA</div>
-            <div class="form-option" data-val="150-300k" onclick="selectOption(this,'budget')">150 000 – 300 000 FCFA</div>
-            <div class="form-option" data-val="300k+" onclick="selectOption(this,'budget')">300 000 FCFA et plus</div>
+            <div class="form-option" role="button" tabindex="0" data-val="<50k" onclick="selectOption(this,'budget')">Moins de 50 000 FCFA</div>
+            <div class="form-option" role="button" tabindex="0" data-val="50-150k" onclick="selectOption(this,'budget')">50 000 – 150 000 FCFA</div>
+            <div class="form-option" role="button" tabindex="0" data-val="150-300k" onclick="selectOption(this,'budget')">150 000 – 300 000 FCFA</div>
+            <div class="form-option" role="button" tabindex="0" data-val="300k+" onclick="selectOption(this,'budget')">300 000 FCFA et plus</div>
           </div>
           <div class="form-nav"><button class="form-nav-prev" onclick="prevStep(5)">← Retour</button><button class="form-nav-next" onclick="nextStep(5)">Suivant →</button></div>
         </div>
         <div class="form-step" id="step-6">
           <div class="form-step-title">Vos coordonnées</div>
           <div class="form-step-sub">Pour vous recontacter avec votre devis personnalisé.</div>
-          <input class="form-input" type="text" id="contact-nom" placeholder="Votre nom complet">
-          <input class="form-input" type="email" id="contact-email" placeholder="Votre adresse email">
-          <input class="form-input" type="tel" id="contact-wa" placeholder="Votre numéro WhatsApp">
+          <div class="form-field">
+            <label class="form-field-label" for="contact-nom">Nom complet</label>
+            <input class="form-input" type="text" id="contact-nom" placeholder="Votre nom complet" autocomplete="name" required aria-required="true" aria-describedby="err-nom">
+            <span class="form-error-msg" id="err-nom" role="alert">Veuillez entrer votre nom.</span>
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="contact-email">Adresse email</label>
+            <input class="form-input" type="email" id="contact-email" placeholder="Votre adresse email" autocomplete="email" required aria-required="true" aria-describedby="err-email">
+            <span class="form-error-msg" id="err-email" role="alert">Veuillez entrer un email valide.</span>
+          </div>
+          <div class="form-field">
+            <label class="form-field-label" for="contact-wa">Numéro WhatsApp</label>
+            <input class="form-input" type="tel" id="contact-wa" placeholder="Votre numéro WhatsApp" autocomplete="tel" required aria-required="true" aria-describedby="err-wa">
+            <span class="form-error-msg" id="err-wa" role="alert">Veuillez entrer votre numéro.</span>
+          </div>
           <div class="form-nav"><button class="form-nav-prev" onclick="prevStep(6)">← Retour</button><button class="form-nav-next" onclick="nextStep(6)">Envoyer la demande</button></div>
         </div>
       </div>
@@ -2684,12 +2745,21 @@ window.addEventListener('scroll', () => {
 // ── MOBILE NAV ──
 function toggleMobileNav() {
   const links = document.querySelector('.nav-links');
+  const btn = document.getElementById('nav-menu-btn');
   if (!links) return;
-  if (links.style.display === 'flex') {
-    links.style.display = 'none';
+  const isOpen = links.classList.contains('mobile-open');
+  if (isOpen) {
+    links.classList.remove('mobile-open');
+    btn && btn.setAttribute('aria-expanded','false');
   } else {
-    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(4,15,13,0.98);backdrop-filter:blur(20px);padding:28px 32px;gap:20px;border-bottom:1px solid rgba(200,185,122,0.12);z-index:999';
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.style.display = 'none'; }));
+    links.classList.add('mobile-open');
+    btn && btn.setAttribute('aria-expanded','true');
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('mobile-open');
+        btn && btn.setAttribute('aria-expanded','false');
+      }, { once: true });
+    });
   }
 }
 
@@ -2704,17 +2774,73 @@ function switchTab(tab, btn) {
 
 // ── FORM ──
 let formData = {};
+
+function showFieldError(id, msgId, show) {
+  const field = document.getElementById(id);
+  const msg = document.getElementById(msgId);
+  if (!field || !msg) return;
+  if (show) {
+    field.classList.add('has-error');
+    msg.classList.add('visible');
+  } else {
+    field.classList.remove('has-error');
+    msg.classList.remove('visible');
+  }
+}
+
+// Effacer erreur dès que l'utilisateur tape
+['contact-nom','contact-email','contact-wa'].forEach(id => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      el.classList.remove('has-error');
+      const errId = id.replace('contact-','err-').replace('nom','nom').replace('email','email').replace('wa','wa');
+      const err = document.getElementById(errId);
+      if (err) err.classList.remove('visible');
+    });
+  });
+});
+
 function selectOption(el, key) {
   el.closest('.form-options').querySelectorAll('.form-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   formData[key] = el.dataset.val;
 }
+
+// Accessibilité clavier sur form-option
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.form-option').forEach(opt => {
+    opt.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
+    });
+  });
+});
+
 function nextStep(step) {
-  if (step === 1 && !formData.service) { alert('Veuillez sélectionner un service.'); return; }
+  // Validation step 1 — service requis
+  if (step === 1 && !formData.service) {
+    const opts = document.querySelectorAll('#step-1 .form-option');
+    opts.forEach(o => o.style.borderColor = 'rgba(224,112,112,0.5)');
+    setTimeout(() => opts.forEach(o => o.style.borderColor = ''), 1800);
+    // Message sous les options
+    let hint = document.getElementById('step1-hint');
+    if (!hint) {
+      hint = document.createElement('p');
+      hint.id = 'step1-hint';
+      hint.style.cssText = 'font-size:0.72rem;color:var(--error);margin-top:-20px;margin-bottom:16px;animation:errIn 0.25s ease';
+      hint.textContent = 'Veuillez choisir un service pour continuer.';
+      document.querySelector('#step-1 .form-nav').before(hint);
+    }
+    hint.style.display = 'block';
+    setTimeout(() => { if (hint) hint.style.display = 'none'; }, 3000);
+    return;
+  }
   if (step === 6) { submitForm(); return; }
   goToStep(step + 1);
 }
+
 function prevStep(step) { goToStep(step - 1); }
+
 function goToStep(step) {
   document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
   const target = document.getElementById('step-' + step);
@@ -2727,11 +2853,19 @@ function goToStep(step) {
     if (i === step) ind.classList.add('active');
   }
 }
+
 function submitForm() {
-  const nom = document.getElementById('contact-nom').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const wa = document.getElementById('contact-wa').value.trim();
-  if (!nom || !email || !wa) { alert('Veuillez remplir tous les champs de contact.'); return; }
+  const nom = document.getElementById('contact-nom');
+  const email = document.getElementById('contact-email');
+  const wa = document.getElementById('contact-wa');
+  let valid = true;
+
+  if (!nom.value.trim()) { showFieldError('contact-nom','err-nom',true); valid = false; } else { showFieldError('contact-nom','err-nom',false); }
+  if (!email.value.trim() || !email.value.includes('@')) { showFieldError('contact-email','err-email',true); valid = false; } else { showFieldError('contact-email','err-email',false); }
+  if (!wa.value.trim()) { showFieldError('contact-wa','err-wa',true); valid = false; } else { showFieldError('contact-wa','err-wa',false); }
+
+  if (!valid) return;
+
   document.querySelector('.form-body').style.display = 'none';
   document.querySelector('.form-progress').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
