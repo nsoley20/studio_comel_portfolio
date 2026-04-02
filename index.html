@@ -2381,6 +2381,645 @@ footer::before{
   background:linear-gradient(90deg,transparent,rgba(200,185,122,0.18),transparent);
 }
 footer{position:relative;overflow:hidden}
+
+/* ════════════════════════════════════════════════════════════
+   ■  IDENTITÉ ORIGINALE — Fond vert profond restauré
+      + Éléments de design qui sortent du commun
+   ════════════════════════════════════════════════════════════ */
+
+/* ══ SERVICES — dark brand restauré ══ */
+#services{background:var(--black)!important}
+/* ── Services dark restauré ── */
+#services::before{mix-blend-mode:screen!important;opacity:0.03!important}
+#services::after{background:radial-gradient(circle,rgba(11,61,50,0.35) 0%,transparent 70%)!important;top:auto!important;bottom:-280px!important;right:-150px!important}
+#services .sc-1{background:linear-gradient(145deg,#0c1410 0%,#081009 100%)!important}
+#services .sc-2{background:linear-gradient(145deg,#0b1210 0%,#070e0c 100%)!important}
+#services .sc-3{background:linear-gradient(145deg,#0d1310 0%,#091109 100%)!important}
+#services .sc-4{background:linear-gradient(145deg,#0b1311 0%,#070f0d 100%)!important}
+#services .service-card{border:1px solid rgba(255,255,255,0.04)!important;border-radius:24px!important;box-shadow:none!important}
+#services .service-card:hover{box-shadow:0 28px 70px rgba(0,0,0,0.45),0 0 0 1px rgba(200,185,122,0.1)!important}
+#services .sc-num{color:rgba(255,255,255,0.028)!important}
+#services .service-card:hover .sc-num{color:rgba(200,185,122,0.045)!important}
+#services .sc-1 .sc-orb{--sc-orb:rgba(200,185,122,0.07)}
+#services .sc-2 .sc-orb{--sc-orb:rgba(80,220,160,0.07)}
+#services .sc-3 .sc-orb{--sc-orb:rgba(200,185,122,0.06)}
+#services .sc-4 .sc-orb{--sc-orb:rgba(80,200,180,0.07)}
+#services .service-icon{background:rgba(11,61,50,0.55)!important;border-color:rgba(200,185,122,0.1)!important}
+#services .service-icon svg{stroke:#8ec9ae!important;opacity:1}
+#services .service-card:hover .service-icon{background:rgba(11,61,50,0.8)!important;border-color:rgba(200,185,122,0.22)!important}
+#services .service-card h3{color:var(--white)!important;text-shadow:none!important}
+#services .service-card p{color:rgba(255,255,255,0.4)!important}
+#services .sc-tags span{color:rgba(200,185,122,0.55)!important;background:rgba(200,185,122,0.06)!important;border-color:rgba(200,185,122,0.12)!important}
+#services .sc-cta{color:var(--accent)!important}
+#services .sc-cta-arrow{background:var(--accent)!important}
+#services .sc-cta-arrow::after{border-left-color:var(--accent)!important}
+#services .section-eyebrow{color:var(--accent)!important;background:rgba(200,185,122,0.07)!important;border-color:rgba(200,185,122,0.18)!important}
+#services .section-eyebrow::before{background:var(--accent)!important;box-shadow:0 0 8px var(--accent)!important}
+#services .section-title{background:linear-gradient(118deg,#ffffff 15%,rgba(200,185,122,0.85) 100%)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;text-shadow:none!important}
+#services .niches-title{color:var(--white)!important;text-shadow:none!important}
+#services .niches-count{color:rgba(200,185,122,0.45)!important}
+#services .niche-tag{background:rgba(255,255,255,0.022)!important;border-color:rgba(255,255,255,0.055)!important;box-shadow:none!important}
+#services .niche-tag:hover{border-color:rgba(200,185,122,0.22)!important;box-shadow:0 12px 28px rgba(0,0,0,0.3)!important}
+#services .niche-icon{background:rgba(11,61,50,0.7)!important;border-color:rgba(80,220,160,0.12)!important}
+#services .niche-icon svg{stroke:#7ab89e!important;opacity:1}
+#services .niche-name{color:rgba(255,255,255,0.8)!important}
+#services .niche-client{color:rgba(200,185,122,0.5)!important}
+#services + .led-strip{background:linear-gradient(90deg,transparent,rgba(80,220,160,0.35) 40%,rgba(200,185,122,0.3) 60%,transparent)!important;box-shadow:0 0 20px rgba(80,220,160,0.15)!important}
+
+/* ── About dark restauré ── */
+#about{background:linear-gradient(180deg,var(--green-dark) 0%,#060e0c 100%)!important}
+#about .about-fil1{mix-blend-mode:overlay!important;opacity:0.08!important}
+#about .about-fil2{opacity:0.1!important;mix-blend-mode:normal!important}
+#about .about-landscape{opacity:0.06!important;filter:none!important}
+#about .about-orb-1{background:radial-gradient(circle,rgba(80,220,160,0.08) 0%,transparent 70%)!important}
+#about .about-orb-2{background:radial-gradient(circle,rgba(200,185,122,0.1) 0%,transparent 70%)!important}
+#about .about-inner::before{display:none!important}
+#about .about-art,#about .about-text-col{position:relative;z-index:1}
+#about .about-tag-pill{background:transparent!important;border-color:rgba(245,240,220,0.2)!important}
+#about .about-tag-pill span{color:rgba(245,240,220,0.65)!important}
+#about .about-tag-pill::before{background:var(--accent)!important;box-shadow:0 0 8px var(--accent)!important}
+#about .section-title{background:linear-gradient(118deg,var(--beige) 15%,rgba(200,185,122,0.7) 100%)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;text-shadow:none!important}
+#about .about-title .name1{color:var(--beige)!important;-webkit-text-fill-color:var(--beige)!important}
+#about .about-title .name2{color:rgba(245,240,220,0.4)!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1px rgba(245,240,220,0.3)!important}
+#about .about-text{color:rgba(245,240,220,0.6)!important}
+#about .about-stat{background:rgba(245,240,220,0.03)!important;border-color:rgba(245,240,220,0.1)!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:22px!important}
+#about .about-stat:hover{border-color:rgba(200,185,122,0.25)!important;background:rgba(200,185,122,0.04)!important}
+#about .about-stat-num{color:var(--beige)!important;-webkit-text-fill-color:var(--beige)!important;filter:none!important}
+#about .about-stat-label{color:rgba(245,240,220,0.45)!important}
+#about .btn-beige{background:var(--beige)!important;color:var(--green)!important;border-color:var(--beige)!important;box-shadow:none!important}
+#about .btn-beige::before{background:var(--green-dark)!important}
+#about .btn-beige:hover{color:var(--beige)!important;border-color:var(--green-dark)!important}
+#about .about-art::before{background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(7,31,26,0.55) 0%,transparent 100%)!important}
+#about .about-art-bg{opacity:0.07!important;filter:saturate(0.3)!important}
+#about .about-art-texture{mix-blend-mode:overlay!important;opacity:0.18!important}
+#about .about-art-ring{border-color:inherit!important}
+#about .about-art-ring.r1{border-color:rgba(200,185,122,0.15)!important}
+#about .about-art-ring.r2{border-color:rgba(200,185,122,0.08)!important}
+#about .about-art-ring.r3{border-color:rgba(245,240,220,0.05)!important}
+#about .about-art-ring.r2::before{background:var(--accent)!important;box-shadow:0 0 12px var(--accent)!important}
+#about .about-art-letter{color:transparent!important;-webkit-text-stroke:1.5px rgba(245,240,220,0.3)!important;text-shadow:0 0 80px rgba(200,185,122,0.12)!important}
+#about .about-art:hover .about-art-letter{color:rgba(245,240,220,0.06)!important;-webkit-text-stroke:1px rgba(200,185,122,0.5)!important}
+#about .about-art-year{color:rgba(200,185,122,0.5)!important}
+#about .about-art-sep{color:var(--accent)!important;opacity:0.4}
+#about .about-art-studio{color:rgba(245,240,220,0.25)!important}
+#about .about-art-rotated{color:rgba(245,240,220,0.2)!important}
+#about .about-art-hline{background:linear-gradient(90deg,transparent,rgba(200,185,122,0.35),transparent)!important;box-shadow:0 0 12px rgba(200,185,122,0.15)!important}
+#about .about-art-vline{background:linear-gradient(180deg,transparent,rgba(245,240,220,0.12),transparent)!important}
+#about .about-art-tag{background:rgba(7,31,26,0.92)!important;color:var(--accent)!important;border-color:rgba(200,185,122,0.25)!important;box-shadow:0 0 16px rgba(200,185,122,0.1)!important}
+#about .about-art-tag-2{background:rgba(7,31,26,0.75)!important;color:rgba(245,240,220,0.5)!important;border-color:rgba(245,240,220,0.12)!important;box-shadow:none!important}
+#about .about-art-orb-g{background:radial-gradient(circle,rgba(200,185,122,0.2) 0%,transparent 70%)!important}
+#about .about-art-orb-t{background:radial-gradient(circle,rgba(80,220,160,0.14) 0%,transparent 70%)!important}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  DESIGN ORIGINAL — Éléments hors du commun
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Stats bar — bande beige qui coupe la page en diagonale ── */
+#stats-bar{
+  clip-path:polygon(0 18%,100% 0,100% 82%,0 100%)!important;
+  padding:clamp(80px,10vw,130px) 0!important;
+  margin:-36px 0!important;
+  position:relative;z-index:5!important;
+}
+
+/* ── Filet de bord gauche, visible sur grand écran ── */
+@media(min-width:1500px){
+  body::after{
+    content:'';
+    position:fixed;left:20px;top:0;bottom:0;
+    width:1px;
+    background:linear-gradient(180deg,
+      transparent 5%,rgba(200,185,122,0.1) 20%,
+      rgba(200,185,122,0.1) 80%,transparent 95%);
+    pointer-events:none;z-index:var(--z-base);
+  }
+}
+
+/* ── Index de section — discret, top-right de chaque bloc ── */
+.services-inner,.projets-inner,.resources-inner,.devis-inner{position:relative}
+.services-inner::after,.projets-inner::after,
+.resources-inner::after,.devis-inner::after{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.48rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(200,185,122,0.13);
+  position:absolute;right:0;top:6px;
+  pointer-events:none;
+}
+.services-inner::after{content:'02 · SERVICES'}
+.projets-inner::after{content:'03 · RÉALISATIONS'}
+.resources-inner::after{content:'05 · RESSOURCES'}
+.devis-inner::after{content:'06 · CONTACT'}
+
+/* ── Coordonnées Dakar dans le hero ── */
+.hero-inner::after{
+  content:'14.7167°N · 17.4677°W · DAKAR';
+  position:absolute;right:0;bottom:20px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.46rem;letter-spacing:0.26em;
+  color:rgba(200,185,122,0.15);
+  pointer-events:none;white-space:nowrap;
+}
+@media(max-width:768px){.hero-inner::after{display:none}}
+
+/* ── Section headers — trait avant chaque titre ── */
+.section-header{position:relative}
+.section-header::before{
+  content:'';display:block;
+  width:28px;height:1px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  margin-bottom:18px;opacity:0.5;
+}
+
+/* ── Stats — espacement éditorial ── */
+.stat-number{letter-spacing:-0.02em!important}
+.stat-label{letter-spacing:0.18em!important}
+
+/* ── Section divider — trait + point doré ── */
+.section-divider{
+  height:1px!important;
+  background:linear-gradient(90deg,
+    transparent 0%,rgba(200,185,122,0.08) 20%,
+    rgba(200,185,122,0.25) 50%,rgba(200,185,122,0.08) 80%,
+    transparent 100%)!important;
+  position:relative!important;display:block!important;
+}
+.section-divider::after{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:5px;height:5px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px rgba(200,185,122,0.6),0 0 32px rgba(200,185,122,0.15);
+}
+
+/* ── Footer — grand watermark typographique ── */
+footer::after{
+  content:"STUDIO COM\27EL";
+  position:absolute;bottom:-10px;left:50%;
+  transform:translateX(-50%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(52px,9vw,120px);
+  letter-spacing:0.06em;
+  color:rgba(200,185,122,0.04);
+  pointer-events:none;user-select:none;
+  white-space:nowrap;line-height:1;z-index:0;
+}
+footer .footer-inner,footer .footer-bottom{position:relative;z-index:1}
+
+/* ── Projets — compteur encore plus dramatique ── */
+.projets-big-count{
+  font-size:clamp(72px,10vw,120px)!important;
+  letter-spacing:-0.04em!important;
+}
+
+/* ── CM project num — présence maximale ── */
+.cm-project-num{
+  font-size:clamp(110px,16vw,200px)!important;
+  color:rgba(200,185,122,0.06)!important;
+}
+
+/* ── Eyebrow dot — rythme élégant ── */
+.section-eyebrow::before{animation:dotPulse 3s ease-in-out infinite!important}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  NOS RÉALISATIONS — Refonte éditoriale
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Header — compteur de projets & trait ── */
+.projets-header{position:relative;padding-bottom:48px!important}
+.projets-header::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(200,185,122,0.25),transparent 70%);
+}
+.projets-big-count{
+  background:linear-gradient(135deg,var(--accent) 0%,rgba(200,185,122,0.25) 100%)!important;
+  -webkit-background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  background-clip:text!important;
+  line-height:0.85!important;
+}
+
+/* ── Tabs — redesign pill flottant ── */
+.tabs-bar{
+  background:rgba(255,255,255,0.03)!important;
+  border:1px solid rgba(255,255,255,0.06)!important;
+  border-radius:100px!important;
+  padding:5px!important;
+  gap:2px!important;
+  width:fit-content!important;
+  margin-bottom:56px!important;
+}
+.tab-btn{
+  border-radius:100px!important;
+  padding:10px 20px!important;
+  font-size:0.72rem!important;
+  border-bottom:none!important;
+  margin-bottom:0!important;
+}
+.tab-btn.active{
+  background:rgba(200,185,122,0.12)!important;
+  border-bottom:none!important;
+  box-shadow:0 0 0 1px rgba(200,185,122,0.2),inset 0 1px 0 rgba(200,185,122,0.1)!important;
+}
+.tab-btn.active::after{display:none!important}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,0.05)!important}
+
+/* ── CM Projects — améliorations éditoriales ── */
+.cm-project{
+  padding:64px 0!important;
+  margin-bottom:0!important;
+  border-bottom:1px solid rgba(255,255,255,0.04)!important;
+  position:relative;
+}
+/* Indicateur latéral de projet — ligne dorée à gauche */
+.cm-project::before{
+  content:'';
+  position:absolute;left:-40px;top:64px;bottom:64px;
+  width:1px;
+  background:linear-gradient(180deg,transparent,rgba(200,185,122,0.3),transparent);
+}
+@media(max-width:1400px){.cm-project::before{display:none}}
+
+/* Numéro watermark — repositionné, plus dramatique */
+.cm-project-num{
+  font-size:clamp(130px,18vw,220px)!important;
+  top:-30px!important;
+  opacity:1;
+}
+
+/* Nom du projet — plus de punch */
+.cm-info-name{
+  font-size:clamp(44px,6vw,80px)!important;
+  letter-spacing:-0.01em!important;
+  margin-bottom:24px!important;
+}
+
+/* Images plus hautes */
+.cm-img.top{height:240px!important}
+.cm-img.wide{height:175px!important}
+
+/* Stats — barre de progression sous chaque chiffre */
+.cm-stat{position:relative!important;overflow:hidden!important}
+.cm-stat-bar{
+  display:block;
+  height:2px;
+  border-radius:2px;
+  margin-top:10px;
+  background:linear-gradient(90deg,var(--accent),rgba(200,185,122,0.15));
+  transform-origin:left;
+  transform:scaleX(0);
+  transition:transform 1s cubic-bezier(.16,1,.3,1);
+}
+.cm-stat.bar-visible .cm-stat-bar{transform:scaleX(1)}
+
+/* Séparateur entre projets avec label "Projet 01" */
+.cm-project-divider{
+  display:flex;align-items:center;gap:16px;
+  padding:0;
+  position:relative;z-index:1;
+}
+.cm-project-divider-num{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.52rem;letter-spacing:0.3em;
+  color:rgba(200,185,122,0.3);text-transform:uppercase;
+  flex-shrink:0;
+}
+.cm-project-divider-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,185,122,0.15),transparent)}
+
+/* ── Design cards — plus éditorial ── */
+.design-grid{gap:20px!important}
+.design-card{border-radius:20px!important}
+.design-card-name{font-size:clamp(1.6rem,2.8vw,2.2rem)!important}
+/* Accent corner plus visible */
+.design-card::before{
+  width:100px!important;height:100px!important;
+  background:radial-gradient(circle at 0 0,rgba(200,185,122,0.1),transparent 70%)!important;
+}
+/* Tag "01 / 02" sur chaque card design */
+.design-card-meta{
+  position:relative;
+}
+.design-card-meta::after{
+  content:attr(data-index);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem;
+  color:rgba(200,185,122,0.06);
+  position:absolute;right:0;top:50%;
+  transform:translateY(-50%);
+  letter-spacing:0.02em;
+  line-height:1;
+}
+
+/* ── Affiches — intro éditoriale ── */
+.affiches-header{
+  padding-bottom:28px!important;
+  border-bottom:1px solid rgba(255,255,255,0.05)!important;
+  margin-bottom:36px!important;
+}
+.affiches-header h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,4vw,48px);
+  color:var(--white);letter-spacing:0.04em;
+}
+
+/* Masonry — gap plus serré, plus propre */
+.affiches-masonry{column-gap:8px!important}
+.affiche-item{margin-bottom:8px!important;border-radius:14px!important}
+.affiche-item img{border-radius:14px!important}
+
+/* ── Tab content — animation d'entrée ── */
+.tab-content.active{
+  animation:tabFadeIn 0.4s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes tabFadeIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  RESPONSIVE GLOBAL — Corrections clips & mobile
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Mobile : angles réduits ── */
+@media(max-width:768px){
+  /* Clips moins agressifs sur mobile */
+  #hero{
+    clip-path:polygon(0 0,100% 0,100% 97%,0 100%)!important;
+    margin-bottom:-20px!important;
+    padding-bottom:40px!important;
+  }
+  #stats-bar{
+    clip-path:polygon(0 8%,100% 0,100% 92%,0 100%)!important;
+    padding:clamp(60px,14vw,100px) 0!important;
+    margin:-20px 0!important;
+  }
+  #services{
+    padding-top:calc(var(--section-py) + 24px)!important;
+    margin-top:-2px!important;
+  }
+  #trust{
+    clip-path:polygon(0 20px,100% 0,100% 100%,0 100%)!important;
+    padding-top:calc(var(--section-py) + 32px)!important;
+    margin-top:-20px!important;
+  }
+  #resources{
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),0 100%)!important;
+    padding-bottom:calc(var(--section-py) + 30px)!important;
+  }
+  #devis{
+    clip-path:polygon(0 20px,100% 0,100% 100%,0 100%)!important;
+    padding-top:calc(var(--section-py) + 32px)!important;
+    margin-top:-20px!important;
+  }
+
+  /* Tabs pill — pleine largeur scrollable */
+  .tabs-bar{
+    width:100%!important;
+    border-radius:16px!important;
+    padding:6px!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+  }
+  .tab-btn{
+    padding:9px 14px!important;
+    font-size:0.67rem!important;
+    flex-shrink:0!important;
+  }
+
+  /* CM images plus hautes sur mobile */
+  .cm-img.top{height:180px!important}
+  .cm-img.wide{height:130px!important}
+  .cm-info-name{font-size:clamp(36px,9vw,60px)!important}
+
+  /* Section header trait */
+  .section-header::before{display:none}
+
+  /* Ticker */
+  .ticker-item{font-size:0.85rem!important;padding:0 20px!important}
+
+  /* Numéros de section */
+  #services .services-inner::before,
+  #projets .projets-inner::before{display:none}
+}
+
+@media(max-width:560px){
+  /* Clips quasi plats sur très petit écran */
+  #hero{clip-path:none!important;margin-bottom:0!important}
+  #stats-bar{clip-path:none!important;margin:0!important;padding:clamp(40px,8vw,70px) 0!important}
+  #services{padding-top:var(--section-py)!important;margin-top:0!important}
+  #trust,#devis{
+    clip-path:polygon(0 12px,100% 0,100% 100%,0 100%)!important;
+    padding-top:calc(var(--section-py) + 20px)!important;
+    margin-top:-12px!important;
+  }
+  #resources{
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),0 100%)!important;
+    padding-bottom:calc(var(--section-py) + 20px)!important;
+  }
+
+  /* CM */
+  .cm-project{padding:40px 0!important}
+  .cm-img.top{height:140px!important}
+  .cm-img.wide{height:100px!important}
+  .cm-stats{grid-template-columns:1fr 1fr!important}
+  .tabs-bar{border-radius:12px!important}
+
+  /* Affiches */
+  .affiches-masonry{columns:2!important;column-gap:6px!important}
+  .affiche-item{margin-bottom:6px!important}
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  ANGLES & FLUX — Coupes diagonales cohérentes
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Hero — sortie en biseau vers la stats bar ── */
+#hero{
+  clip-path:polygon(0 0,100% 0,100% 94%,0 100%)!important;
+  margin-bottom:-36px!important;
+  padding-bottom:80px!important;
+}
+
+/* ── Stats bar — déjà coupée en diagonale ── */
+/* Le clip-path polygon(0 18%,100% 0,100% 82%,0 100%) est en place */
+
+/* ── Services — entrée nette sous la stats bar ── */
+#services{
+  margin-top:-2px!important;
+  padding-top:calc(var(--section-py) + 40px)!important;
+}
+
+/* ── Trust — entrée en biseau ── */
+#trust{
+  clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)!important;
+  padding-top:calc(var(--section-py) + 60px)!important;
+  margin-top:-40px!important;
+}
+
+/* ── Resources — sortie biseautée ── */
+#resources{
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%)!important;
+  padding-bottom:calc(var(--section-py) + 50px)!important;
+}
+
+/* ── Devis — entrée biseautée ── */
+#devis{
+  clip-path:polygon(0 40px,100% 0,100% 100%,0 100%)!important;
+  padding-top:calc(var(--section-py) + 60px)!important;
+  margin-top:-40px!important;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  TICKER — Bande de défilement typographique
+   ════════════════════════════════════════════════════════════ */
+.ticker-strip{
+  overflow:hidden;
+  background:var(--accent);
+  padding:14px 0;
+  position:relative;z-index:10;
+  user-select:none;
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:tickerScroll 22s linear infinite;
+}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  display:flex;align-items:center;gap:28px;
+  padding:0 40px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;
+  letter-spacing:0.18em;
+  color:var(--green-deep);
+  white-space:nowrap;
+}
+.ticker-sep{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(4,15,13,0.35);
+  flex-shrink:0;
+}
+@keyframes tickerScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  NUMÉROS DE SECTION — Présence typographique
+   ════════════════════════════════════════════════════════════ */
+
+/* Numéro géant en fond de chaque section principale */
+#services .services-inner::before,
+#projets .projets-inner::before,
+#trust .trust-header::before,
+#about .about-inner::before{
+  font-family:'Bebas Neue',sans-serif;
+  position:absolute;
+  line-height:0.8;
+  pointer-events:none;user-select:none;
+  z-index:0;
+}
+#services .services-inner{position:relative}
+#services .services-inner::before{
+  content:'02';
+  right:-30px;top:-20px;
+  font-size:clamp(200px,28vw,400px);
+  color:rgba(200,185,122,0.025);
+  letter-spacing:-0.06em;
+}
+#projets .projets-inner{position:relative}
+#projets .projets-inner::before{
+  content:'03';
+  right:-30px;top:-20px;
+  font-size:clamp(200px,28vw,400px);
+  color:rgba(200,185,122,0.03);
+  letter-spacing:-0.06em;
+}
+/* About — supprimé (inner::before déjà utilisé pour autre chose) */
+
+/* S'assurer que le contenu est au-dessus */
+#services .services-grid,
+#services .niches-section,
+#services .section-header{position:relative;z-index:1}
+#projets .projets-header,
+#projets .tabs-bar,
+#projets .tab-content{position:relative;z-index:1}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  SERVICE CARDS — Ligne latérale colorée & numéro visible
+   ════════════════════════════════════════════════════════════ */
+.service-card{overflow:hidden!important}
+
+/* Barre latérale gauche — via ::before sur la card elle-même */
+.service-card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:2px;
+  background:linear-gradient(180deg,var(--sc-color,var(--accent)),transparent);
+  opacity:0.4;
+  transition:opacity 0.4s,width 0.4s cubic-bezier(.16,1,.3,1);
+  z-index:5;
+}
+.service-card:hover::before{opacity:0.85;width:3px}
+
+/* Numéro sc-num — légèrement plus grand et incliné */
+.sc-num{transform:rotate(-8deg)!important;transform-origin:right bottom!important}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  ABOUT — Watermark STUDIO en fond (dark)
+   ════════════════════════════════════════════════════════════ */
+#about .about-inner{position:relative;overflow:hidden}
+#about .about-inner::after{
+  content:'STUDIO';
+  position:absolute;
+  left:-4%;bottom:-10%;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(120px,18vw,260px);
+  letter-spacing:0.04em;
+  color:rgba(200,185,122,0.028);
+  pointer-events:none;user-select:none;
+  line-height:1;z-index:0;
+  white-space:nowrap;
+}
+#about .about-art,
+#about .about-text-col{position:relative;z-index:1}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  PROJETS TABS — indicateur de tab actif en diagonale
+   ════════════════════════════════════════════════════════════ */
+.tab-btn.active{
+  position:relative;overflow:hidden;
+}
+.tab-btn.active::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--accent),transparent);
+  clip-path:polygon(4% 0%,100% 0%,96% 100%,0% 100%);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   ■  RESPONSIVE — corrections clips sur mobile
+   ════════════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  #hero{clip-path:polygon(0 0,100% 0,100% 96%,0 100%)!important;margin-bottom:-24px!important}
+  #trust{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)!important;padding-top:calc(var(--section-py) + 36px)!important;margin-top:-24px!important}
+  #devis{clip-path:polygon(0 24px,100% 0,100% 100%,0 100%)!important;padding-top:calc(var(--section-py) + 36px)!important;margin-top:-24px!important}
+  #resources{clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),0 100%)!important;padding-bottom:calc(var(--section-py) + 30px)!important}
+  .ticker-item{font-size:0.9rem;padding:0 24px}
+  #services .services-inner::before,
+  #projets .projets-inner::before{display:none}
+}
 </style>
 </head>
 <body>
@@ -2491,7 +3130,7 @@ footer{position:relative;overflow:hidden}
   <div class="services-inner">
     <div class="section-header reveal">
       <span class="section-eyebrow">Ce que nous faisons</span>
-      <h2 class="section-title" style="color:var(--white)">NOS SERVICES</h2>
+      <h2 class="section-title">NOS SERVICES</h2>
     </div>
 
     <div class="services-grid">
@@ -2588,7 +3227,25 @@ footer{position:relative;overflow:hidden}
 </section>
 
 <!-- LED STRIP -->
-<div class="led-strip" style="background:linear-gradient(90deg,transparent,rgba(80,220,160,0.35) 40%,rgba(200,185,122,0.3) 60%,transparent);box-shadow:0 0 20px rgba(80,220,160,0.15)"></div>
+<!-- TICKER -->
+<div class="ticker-strip">
+  <div class="ticker-track">
+    <div class="ticker-item">COMMUNITY MANAGEMENT <span class="ticker-sep"></span></div>
+    <div class="ticker-item">CONCEPTION GRAPHIQUE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">STRATÉGIE DIGITALE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">CRÉATION DE CONTENU <span class="ticker-sep"></span></div>
+    <div class="ticker-item">IDENTITÉ VISUELLE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">AFFICHES & VISUELS <span class="ticker-sep"></span></div>
+    <div class="ticker-item">DAKAR · SÉNÉGAL <span class="ticker-sep"></span></div>
+    <div class="ticker-item">COMMUNITY MANAGEMENT <span class="ticker-sep"></span></div>
+    <div class="ticker-item">CONCEPTION GRAPHIQUE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">STRATÉGIE DIGITALE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">CRÉATION DE CONTENU <span class="ticker-sep"></span></div>
+    <div class="ticker-item">IDENTITÉ VISUELLE <span class="ticker-sep"></span></div>
+    <div class="ticker-item">AFFICHES & VISUELS <span class="ticker-sep"></span></div>
+    <div class="ticker-item">DAKAR · SÉNÉGAL <span class="ticker-sep"></span></div>
+  </div>
+</div>
 
 <!-- PROJETS -->
 <section id="projets">
@@ -2628,10 +3285,10 @@ footer{position:relative;overflow:hidden}
             <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Instagram · TikTok</span>
           </div>
           <div class="cm-stats">
-            <div class="cm-stat"><span class="cm-stat-num">234</span><span class="cm-stat-label">Followers IG</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">283</span><span class="cm-stat-label">Followers TikTok</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">68K</span><span class="cm-stat-label">Vues Reels</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">7.2K</span><span class="cm-stat-label">Likes TikTok</span></div>
+            <div class="cm-stat"><span class="cm-stat-num">234</span><span class="cm-stat-label">Followers IG</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">283</span><span class="cm-stat-label">Followers TikTok</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">68K</span><span class="cm-stat-label">Vues Reels</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">7.2K</span><span class="cm-stat-label">Likes TikTok</span><span class="cm-stat-bar"></span></div>
           </div>
         </div>
         <div class="cm-visuals reveal-right">
@@ -2651,10 +3308,10 @@ footer{position:relative;overflow:hidden}
             <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Instagram · TikTok</span>
           </div>
           <div class="cm-stats">
-            <div class="cm-stat"><span class="cm-stat-num">15.8K</span><span class="cm-stat-label">Followers TikTok</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">42.6K</span><span class="cm-stat-label">Likes TikTok</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">688K</span><span class="cm-stat-label">Vues vidéo</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">619K</span><span class="cm-stat-label">Public atteint</span></div>
+            <div class="cm-stat"><span class="cm-stat-num">15.8K</span><span class="cm-stat-label">Followers TikTok</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">42.6K</span><span class="cm-stat-label">Likes TikTok</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">688K</span><span class="cm-stat-label">Vues vidéo</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">619K</span><span class="cm-stat-label">Public atteint</span><span class="cm-stat-bar"></span></div>
           </div>
         </div>
         <div class="cm-visuals reveal-left">
@@ -2674,10 +3331,10 @@ footer{position:relative;overflow:hidden}
             <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Instagram · TikTok</span>
           </div>
           <div class="cm-stats">
-            <div class="cm-stat"><span class="cm-stat-num">1.3K</span><span class="cm-stat-label">Followers IG</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">10.1K</span><span class="cm-stat-label">Followers TikTok</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">153K</span><span class="cm-stat-label">Vues IG</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">90.3K</span><span class="cm-stat-label">Likes TikTok</span></div>
+            <div class="cm-stat"><span class="cm-stat-num">1.3K</span><span class="cm-stat-label">Followers IG</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">10.1K</span><span class="cm-stat-label">Followers TikTok</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">153K</span><span class="cm-stat-label">Vues IG</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">90.3K</span><span class="cm-stat-label">Likes TikTok</span><span class="cm-stat-bar"></span></div>
           </div>
         </div>
         <div class="cm-visuals reveal-right">
@@ -2697,10 +3354,10 @@ footer{position:relative;overflow:hidden}
             <span><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Instagram · Facebook</span>
           </div>
           <div class="cm-stats">
-            <div class="cm-stat"><span class="cm-stat-num">601</span><span class="cm-stat-label">Followers IG</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">567</span><span class="cm-stat-label">Followers FB</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">3.9K</span><span class="cm-stat-label">Vues / 30j</span></div>
-            <div class="cm-stat"><span class="cm-stat-num">18.4K</span><span class="cm-stat-label">Vues IG</span></div>
+            <div class="cm-stat"><span class="cm-stat-num">601</span><span class="cm-stat-label">Followers IG</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">567</span><span class="cm-stat-label">Followers FB</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">3.9K</span><span class="cm-stat-label">Vues / 30j</span><span class="cm-stat-bar"></span></div>
+            <div class="cm-stat"><span class="cm-stat-num">18.4K</span><span class="cm-stat-label">Vues IG</span><span class="cm-stat-bar"></span></div>
           </div>
         </div>
         <div class="cm-visuals reveal-left">
@@ -2723,7 +3380,7 @@ footer{position:relative;overflow:hidden}
             <img class="design-sub-img" loading="lazy" decoding="async" src="La carte TASTY.png" alt="La Carte Tasty" onclick="openLightbox('La carte TASTY.png')">
           </div>
           <div class="design-card-body">
-            <div class="design-card-meta">
+            <div class="design-card-meta" data-index="01">
               <div class="design-card-type">Identité visuelle · Restauration</div>
               <div class="design-card-year">2024</div>
             </div>
@@ -2738,7 +3395,7 @@ footer{position:relative;overflow:hidden}
             <img class="design-sub-img" loading="lazy" decoding="async" src="Charte Graphique.jpg.jpeg" alt="A Visual Charte" onclick="openLightbox('Charte Graphique.jpg.jpeg')">
           </div>
           <div class="design-card-body">
-            <div class="design-card-meta">
+            <div class="design-card-meta" data-index="02">
               <div class="design-card-type">Identité visuelle · Reels Maker</div>
               <div class="design-card-year">2024</div>
             </div>
@@ -3325,6 +3982,21 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 });
+
+// ── CM STAT BARS ──
+(function(){
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      barObs.unobserve(e.target);
+      const bars = e.target.querySelectorAll('.cm-stat');
+      bars.forEach((s, i) => {
+        setTimeout(() => s.classList.add('bar-visible'), i * 120);
+      });
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.cm-stats').forEach(el => barObs.observe(el));
+})();
 
 // ── STAT COUNTER ──
 (function(){
