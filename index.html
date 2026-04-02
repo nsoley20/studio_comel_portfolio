@@ -1300,6 +1300,125 @@ nav.scrolled{box-shadow:0 4px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(200,185,122,0.
   margin-top:-20px;
 }
 
+/* ■ TRUST 2.0 — Améliorations visuelles ══════════════════ */
+
+/* Watermark CONFIANCE derrière le titre */
+.trust-header{position:relative!important;overflow:visible!important}
+.trust-header::after{
+  content:'CONFIANCE';
+  position:absolute;right:-2%;bottom:-10%;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(70px,12vw,170px);
+  color:rgba(200,185,122,0.04);
+  letter-spacing:0.04em;line-height:1;
+  pointer-events:none;user-select:none;
+  white-space:nowrap;z-index:0;
+}
+
+/* KPIs metrics sous le rule */
+.trust-kpis{
+  max-width:1320px;margin:0 auto;
+  padding:0 clamp(20px,4vw,80px) 60px;
+  display:flex;align-items:stretch;
+  position:relative;z-index:1;
+}
+.trust-kpi{
+  flex:1;padding:0 clamp(16px,2.5vw,36px);
+  border-left:1px solid rgba(200,185,122,0.12);
+}
+.trust-kpi:first-child{border-left:none;padding-left:0}
+.trust-kpi-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,3.2vw,44px);
+  background:linear-gradient(135deg,var(--accent),var(--accent-bright));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;letter-spacing:-0.01em;
+}
+.trust-kpi-label{
+  font-size:0.58rem;letter-spacing:0.15em;
+  color:rgba(245,240,220,0.28);text-transform:uppercase;
+  margin-top:6px;line-height:1.4;
+}
+
+/* Poster items plus grands */
+.poster-item{
+  width:clamp(145px,14vw,210px)!important;
+  height:clamp(220px,24vw,310px)!important;
+  border-radius:18px!important;
+  margin:0 9px!important;
+}
+
+/* Overlay toujours partiellement visible */
+.poster-item-overlay{
+  opacity:1!important;
+  background:linear-gradient(180deg,transparent 52%,rgba(4,15,13,0.98) 100%)!important;
+}
+/* Badge client toujours discret, badge plein au hover */
+.poster-item-overlay span{
+  opacity:0.55;
+  transform:translateY(4px);
+  transition:opacity 0.35s cubic-bezier(.16,1,.3,1),transform 0.35s cubic-bezier(.16,1,.3,1),
+    background 0.35s,border-color 0.35s,box-shadow 0.35s;
+  background:none!important;border-color:transparent!important;
+  backdrop-filter:none!important;box-shadow:none!important;
+  padding:0!important;border-radius:0!important;
+  font-size:0.64rem!important;
+  color:rgba(245,240,220,0.55)!important;
+}
+.poster-item:hover .poster-item-overlay span{
+  opacity:1!important;transform:translateY(0)!important;
+  background:rgba(200,185,122,0.12)!important;
+  border-color:rgba(200,185,122,0.25)!important;
+  backdrop-filter:blur(8px)!important;
+  box-shadow:inset 0 1px 0 rgba(200,185,122,0.15)!important;
+  padding:4px 13px!important;border-radius:20px!important;
+  color:var(--beige)!important;
+}
+
+/* Hover 3D éditorial */
+.poster-item:hover{
+  transform:translateY(-10px) scale(1.03) rotate(-0.4deg)!important;
+  box-shadow:0 30px 70px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(200,185,122,0.28),
+    0 0 50px rgba(200,185,122,0.1)!important;
+}
+
+/* 3ème rangée */
+.posters-row-3 .posters-track{animation:scroll-left 44s linear infinite}
+.posters-row-3{margin-bottom:0!important}
+
+/* Espacement inter-rangées */
+.posters-row{margin-bottom:18px!important}
+
+/* Vitesses réajustées */
+.posters-row-1 .posters-track{animation-duration:36s!important}
+.posters-row-2 .posters-track{animation-duration:52s!important}
+
+/* Fade masks plus larges et plus foncés */
+.posters-container::before,.posters-container::after{
+  width:clamp(80px,12vw,220px)!important;
+}
+.posters-container::before{
+  background:linear-gradient(90deg,var(--green-dark) 0%,transparent 100%)!important;
+}
+.posters-container::after{
+  background:linear-gradient(-90deg,var(--green-dark) 0%,transparent 100%)!important;
+}
+
+@media(max-width:768px){
+  .trust-header::after{display:none}
+  .trust-kpis{gap:0}
+  .trust-kpi{padding:0 12px}
+  .poster-item{width:120px!important;height:178px!important;border-radius:12px!important;margin:0 6px!important}
+}
+@media(max-width:480px){
+  .trust-kpis{flex-wrap:wrap;row-gap:20px;padding-bottom:40px}
+  .trust-kpi{flex:0 0 50%;padding:0}
+  .trust-kpi:nth-child(2n){padding-left:20px;border-left:1px solid rgba(200,185,122,0.12)}
+  .trust-kpi:nth-child(2n+1){border-left:none}
+  .poster-item{width:100px!important;height:150px!important}
+}
+
 /* ─── RESOURCES ───────────────────────────────────────────── */
 #resources{
   background:var(--black);
@@ -3521,6 +3640,24 @@ footer .footer-inner,footer .footer-bottom{position:relative;z-index:1}
     <div class="trust-rule-dot"></div>
     <div class="trust-rule-line right"></div>
   </div>
+  <div class="trust-kpis reveal">
+    <div class="trust-kpi">
+      <div class="trust-kpi-num">8</div>
+      <div class="trust-kpi-label">Secteurs<br>d'activité</div>
+    </div>
+    <div class="trust-kpi">
+      <div class="trust-kpi-num">1M+</div>
+      <div class="trust-kpi-label">Vues<br>générées</div>
+    </div>
+    <div class="trust-kpi">
+      <div class="trust-kpi-num">3</div>
+      <div class="trust-kpi-label">Plateformes<br>maîtrisées</div>
+    </div>
+    <div class="trust-kpi">
+      <div class="trust-kpi-num">100%</div>
+      <div class="trust-kpi-label">Clients<br>satisfaits</div>
+    </div>
+  </div>
   <div class="posters-container">
     <div class="posters-row posters-row-1">
       <div class="posters-track">
@@ -3568,6 +3705,26 @@ footer .footer-inner,footer .footer-bottom{position:relative;z-index:1}
         <div class="poster-item" onclick="openLightbox('fin shilajit tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit tiktok.jpg.jpeg" alt="Shilajit TikTok"><div class="poster-item-overlay"><span>Shilajit TikTok</span></div></div>
         <div class="poster-item" onclick="openLightbox('pba fbk.jpg.jpeg')"><img loading="lazy" decoding="async" src="pba fbk.jpg.jpeg" alt="PBA Facebook"><div class="poster-item-overlay"><span>Pizza By Ange FB</span></div></div>
         <div class="poster-item" onclick="openLightbox('fin tiktok vouga.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin tiktok vouga.jpg.jpeg" alt="Vougaland TikTok"><div class="poster-item-overlay"><span>Vougaland TikTok</span></div></div>
+      </div>
+    </div>
+    <div class="posters-row posters-row-3">
+      <div class="posters-track">
+        <div class="poster-item" onclick="openLightbox('TASTY Charte Graphique.png')"><img loading="lazy" decoding="async" src="TASTY Charte Graphique.png" alt="Tasty Charte"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('yabiso tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso tiktok.jpg.jpeg" alt="Yabiso TikTok"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Crepes,,,.jpg.jpeg')"><img loading="lazy" decoding="async" src="Crepes,,,.jpg.jpeg" alt="Tasty Crêpes"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('stat vouga ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="stat vouga ig.jpg.jpeg" alt="Vougaland Stats"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img loading="lazy" decoding="async" src="pba insta.png" alt="PBA Instagram"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin shilajit insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit insta.jpg.jpeg" alt="Shilajit Fin"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img loading="lazy" decoding="async" src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty Pub"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Vouga debut insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="Vouga debut insta.jpg.jpeg" alt="Vougaland Début"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
+        <div class="poster-item" onclick="openLightbox('TASTY Charte Graphique.png')"><img loading="lazy" decoding="async" src="TASTY Charte Graphique.png" alt="Tasty Charte"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('yabiso tiktok.jpg.jpeg')"><img loading="lazy" decoding="async" src="yabiso tiktok.jpg.jpeg" alt="Yabiso TikTok"><div class="poster-item-overlay"><span>Yabiso</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Crepes,,,.jpg.jpeg')"><img loading="lazy" decoding="async" src="Crepes,,,.jpg.jpeg" alt="Tasty Crêpes"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('stat vouga ig.jpg.jpeg')"><img loading="lazy" decoding="async" src="stat vouga ig.jpg.jpeg" alt="Vougaland Stats"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
+        <div class="poster-item" onclick="openLightbox('pba insta.png')"><img loading="lazy" decoding="async" src="pba insta.png" alt="PBA Instagram"><div class="poster-item-overlay"><span>Pizza By Ange</span></div></div>
+        <div class="poster-item" onclick="openLightbox('fin shilajit insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="fin shilajit insta.jpg.jpeg" alt="Shilajit Fin"><div class="poster-item-overlay"><span>Shilajit Sénégal</span></div></div>
+        <div class="poster-item" onclick="openLightbox('TASTY 12.01 FINAL FINAL FINAL.png')"><img loading="lazy" decoding="async" src="TASTY 12.01 FINAL FINAL FINAL.png" alt="Tasty Pub"><div class="poster-item-overlay"><span>Tasty Food</span></div></div>
+        <div class="poster-item" onclick="openLightbox('Vouga debut insta.jpg.jpeg')"><img loading="lazy" decoding="async" src="Vouga debut insta.jpg.jpeg" alt="Vougaland Début"><div class="poster-item-overlay"><span>Vougaland</span></div></div>
       </div>
     </div>
   </div>
