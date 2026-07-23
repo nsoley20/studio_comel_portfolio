@@ -3280,43 +3280,16 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 @media(max-width:960px){.hero-apps{display:none}}
 
 /* ════════════════════════════════════════════════════════════════════════
-   ■  SERVICES INVERSÉS — fond beige, cartes blanches, texte vert
+   ■  SERVICES — cartes sombres validées par Lionelle, en aplat
+   Le look d'origine (cartes sombres + icônes) est validé : on le garde,
+   on retire juste les micro-dégradés des fonds de cartes.
    ════════════════════════════════════════════════════════════════════════ */
-#services{background:var(--beige)!important}
-#services::before,#services::after{display:none!important}
-#services .section-eyebrow{color:var(--green)!important}
-#services .section-eyebrow::before{background:var(--green)!important}
-#services .section-title{color:var(--green)!important}
-#services .service-card{
-  background:var(--white)!important;
-  border:1px solid rgba(11,61,50,0.12)!important;
-  box-shadow:0 6px 24px rgba(7,13,11,0.05)!important;
-}
+#services .sc-1,#services .sc-2,#services .sc-3,#services .sc-4{background:#0B1310!important}
+#services .service-card{border:1px solid rgba(245,240,220,0.06)!important}
 #services .service-card:hover{
-  border-color:rgba(11,61,50,0.28)!important;
-  box-shadow:0 16px 44px rgba(7,13,11,0.11)!important;
+  border-color:rgba(200,185,122,0.22)!important;
+  box-shadow:0 24px 60px rgba(0,0,0,0.4)!important;
 }
-#services .service-card h3{color:var(--green)!important;text-shadow:none!important}
-#services .service-card p{color:rgba(7,13,11,0.62)!important}
-#services .service-icon{background:var(--green)!important;border:none!important;box-shadow:none!important}
-#services .service-icon svg{stroke:var(--beige)!important}
-#services .sc-tags span{
-  background:rgba(11,61,50,0.06)!important;
-  color:var(--green)!important;
-  border:1px solid rgba(11,61,50,0.14)!important;
-}
-#services .sc-cta{color:var(--green)!important}
-#services .niches-title{color:var(--green)!important;text-shadow:none!important}
-#services .niches-count{color:rgba(11,61,50,0.5)!important}
-#services .niche-tag{
-  background:var(--white)!important;
-  border:1px solid rgba(11,61,50,0.14)!important;
-  box-shadow:none!important;
-}
-#services .niche-tag:hover{border-color:rgba(11,61,50,0.32)!important}
-#services .niche-icon{background:rgba(11,61,50,0.07)!important;border:none!important}
-#services .niche-icon svg{stroke:var(--green)!important}
-#services .niche-name{color:var(--green)!important}
 
 /* ════════════════════════════════════════════════════════════════════════
    ■  ABOUT — texte centré pleine largeur (compo logo retirée)
@@ -3440,7 +3413,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
     <div class="hero-text reveal">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-line"></div>
-        <span>Studio de Communication Digitale — Dakar, Sénégal</span>
+        <span>Studio de communication digitale · Dakar, Sénégal</span>
         <div class="hero-eyebrow-line"></div>
       </div>
       <h1 class="hero-slogan">De la com' <em>à la réalisation</em></h1>
@@ -3495,7 +3468,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3>Gestion des réseaux sociaux</h3>
-        <p>Stratégie éditoriale, création de contenu, planification et animation de vos communautés sur toutes les plateformes. Du concept au post publié, on s'occupe de tout.</p>
+        <p>Calendrier éditorial, création des posts, programmation et réponses à vos communautés. Vous validez le plan du mois, on gère le reste.</p>
         <div class="sc-tags">
           <span>Instagram</span><span>TikTok</span><span>Facebook</span><span>LinkedIn</span>
         </div>
@@ -3511,7 +3484,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
           <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
         </div>
         <h3>Conception graphique</h3>
-        <p>Identités visuelles, chartes graphiques, affiches, flyers et tout support visuel qui représente votre marque avec caractère.</p>
+        <p>Logos, chartes graphiques, affiches et flyers. Des visuels que vos clients reconnaissent avant même de lire le nom.</p>
         <div class="sc-tags">
           <span>Branding</span><span>Affiches</span><span>Flyers</span>
         </div>
@@ -3527,7 +3500,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
           <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <h3>Audit des réseaux sociaux</h3>
-        <p>Analyse complète de votre présence digitale, benchmark concurrentiel et recommandations actionables pour accélérer votre croissance.</p>
+        <p>On passe vos comptes au crible : contenus, statistiques, concurrence. Vous repartez avec un plan d'action, pas un rapport qui dort dans un tiroir.</p>
         <div class="sc-tags">
           <span>Analyse</span><span>KPIs</span><span>Benchmark</span>
         </div>
@@ -3543,7 +3516,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <h3>Stratégie digitale</h3>
-        <p>Définition de votre positionnement en ligne, plan de communication sur mesure et accompagnement dans la durée pour construire une présence digitale durable et cohérente.</p>
+        <p>Positionnement, ton, plan de communication : on pose une ligne claire et on la tient avec vous, mois après mois.</p>
         <div class="sc-tags">
           <span>Positionnement</span><span>Plan éditorial</span><span>Croissance</span>
         </div>
@@ -3659,7 +3632,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
       <div class="cm-project">
         <span class="cm-project-num">03</span>
         <div class="cm-info reveal-left">
-          <div class="cm-info-category">Événementiel — Festival</div>
+          <div class="cm-info-category">Événementiel · Festival</div>
           <h3 class="cm-info-name">VOUGALAND</h3>
           <p class="cm-info-desc">Gestion complète de la communication digitale autour des deux premières éditions à destination de la diaspora étrangère au Sénégal. Mise en place de la stratégie de contenu, création des visuels et supports de communication, animation des réseaux sociaux avant et pendant les événements. Gestion des UGC et production de contenus adaptés aux campagnes publicitaires.</p>
           <div class="cm-info-meta">
@@ -3754,7 +3727,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
         <img src="icone fond vert.PNG" class="relance-icon" alt="Studio Com'El">
         <span class="relance-badge">Nouveauté · Bientôt disponible</span>
         <h2 class="relance-title">STRATÉGIE<br>DE <span>RELANCE</span></h2>
-        <p class="relance-desc">Nous préparons une nouvelle offre dédiée à la relance de marques : repositionnement, refonte visuelle, campagnes de reconquête. Revenez bientôt pour découvrir nos premières réalisations dans ce domaine.</p>
+        <p class="relance-desc">Repositionnement, refonte visuelle, campagnes de reconquête : l'offre est en préparation. Les premières études de cas s'afficheront ici.</p>
       </div>
     </div>
   </div>
@@ -3773,8 +3746,8 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
         <span class="name2">EYEANG</span>
       </h2>
       <div class="about-text">
-        <p>Passionnée de communication digitale et de création visuelle, je fonde Studio Com'El avec une conviction profonde : chaque marque mérite une présence en ligne qui lui ressemble vraiment. Je m'engage à offrir un service à la fois stratégique, réactif et humain.</p>
-        <p>En 3 ans, j'ai accompagné plus de 50 clients dans des secteurs aussi variés que la restauration, l'événementiel, la santé ou la finance — toujours avec le même niveau d'exigence et d'implication, quelle que soit la taille du projet.</p>
+        <p>Community manager et infographiste, je crée Studio Com'El en 2022. Ce qui m'occupe depuis : donner à chaque marque une présence en ligne qui lui ressemble, avec quelqu'un qui répond quand on l'appelle.</p>
+        <p>En trois ans, plus de 50 clients m'ont confié leurs réseaux : restaurants, festivals, santé, finance. Je traite le brief d'une petite enseigne comme la campagne d'un grand festival.</p>
       </div>
       <a href="#devis" class="btn-beige"><span>Un projet en tête ? Discutons-en.</span></a>
     </div>
@@ -3787,13 +3760,13 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
     <div class="trust-header-left">
       <span class="trust-eyebrow">Références clients</span>
       <h2 class="trust-title">AVEC EUX, ON A<br>CONSTRUIT QUELQUE CHOSE</h2>
-      <p class="trust-subtitle">Des marques qui nous ont choisis pour raconter leur histoire</p>
+      <p class="trust-subtitle">Restaurants, festivals, e-commerce, services : ils nous ont confié leurs réseaux et leurs visuels</p>
     </div>
   </div>
   <div class="trust-rule reveal">
     <div class="trust-rule-line"></div>
     <div class="trust-rule-dot"></div>
-    <span class="trust-rule-text">Projets réalisés · Clients satisfaits · Impact mesuré</span>
+    <span class="trust-rule-text">Community management · Conception graphique · Depuis 2022</span>
     <div class="trust-rule-dot"></div>
     <div class="trust-rule-line right"></div>
   </div>
@@ -3850,7 +3823,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
         </div>
         <h3 class="resource-title">Guide Essentiel du<br>Community Manager</h3>
         <div class="resource-price">F 25.000 FCFA <span class="resource-price-sub">· accès immédiat</span></div>
-        <p class="resource-desc">Tout ce qu'il faut savoir pour gérer des comptes professionnels efficacement : stratégie, outils, calendrier éditorial, analyse des performances et bien plus encore.</p>
+        <p class="resource-desc">Stratégie, outils, calendrier éditorial, analyse des performances : le guide rassemble ce que j'utilise tous les jours pour gérer des comptes professionnels, avec des templates prêts à remplir.</p>
         <ul class="resource-items">
           <li class="resource-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Stratégie éditoriale complète</li>
           <li class="resource-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Templates de calendrier</li>
@@ -3985,7 +3958,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
       <div id="form-success">
         <div class="form-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="form-success-title">Demande envoyée !</div>
-        <p class="form-success-text">Merci pour votre message. Je vous recontacte sous 24h avec votre devis personnalisé.<br>En attendant, n'hésitez pas à consulter mes ressources.</p>
+        <p class="form-success-text">J'ai bien reçu votre demande. Je vous réponds sous 24 h avec un devis précis.</p>
       </div>
     </div>
   </div>
@@ -3996,7 +3969,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="logo fond vert.PNG" alt="Studio Com'El">
-      <p class="footer-tagline">Agence de communication digitale basée à Dakar. Stratégie, contenu et conception graphique pour les marques qui veulent exister en ligne.</p>
+      <p class="footer-tagline">Agence de communication digitale à Dakar. Stratégie, contenu et conception graphique pour les marques qui veulent exister en ligne.</p>
       <!-- Réseaux sociaux retirés temporairement — liens vides (404).
            Réactiver dès que les URLs officielles des profils sont fournies. -->
       <div class="footer-socials" hidden>
