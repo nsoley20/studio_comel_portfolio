@@ -3253,7 +3253,8 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 .hero-scroll-hint span{color:rgba(11,61,50,0.5)!important}
 .hero-scroll-arrow{border-color:rgba(11,61,50,0.5)!important;background:transparent!important}
 
-/* Icônes d'apps flottantes */
+/* Icônes d'apps flottantes — le flottement vit sur le svg,
+   le transform de la tuile reste libre (entrée + parallaxe souris) */
 .hero-apps{position:absolute;inset:0;z-index:2;pointer-events:none}
 .hero-app{
   position:absolute;
@@ -3262,20 +3263,27 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
   border:1px solid rgba(11,61,50,0.14);
   box-shadow:0 10px 30px rgba(7,13,11,0.09);
   display:flex;align-items:center;justify-content:center;
-  animation:appFloat 6s ease-in-out infinite;
+  will-change:transform;
 }
-.hero-app svg{width:26px;height:26px}
+.hero-app svg{width:26px;height:26px;animation:appFloat 6s ease-in-out infinite}
 .hero-app .ic-fill{fill:var(--green)}
 .hero-app .ic-stroke{fill:none;stroke:var(--green);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .hero-app .ic-stroke .dot-fill{fill:var(--green);stroke:none}
-.hero-app.a1{left:7%;top:22%}
-.hero-app.a2{left:14%;top:46%;animation-delay:-1.6s;width:52px;height:52px}
-.hero-app.a3{left:6%;top:68%;animation-delay:-3.1s}
-.hero-app.a4{left:16%;top:86%;animation-delay:-4.4s;width:50px;height:50px}
-.hero-app.a5{right:14%;top:22%;animation-delay:-2.2s;width:52px;height:52px}
-.hero-app.a6{right:6%;top:46%;animation-delay:-0.9s}
-.hero-app.a7{right:15%;top:68%;animation-delay:-3.8s;width:50px;height:50px}
-.hero-app.a8{right:7%;top:86%;animation-delay:-5.2s}
+.hero-app.a1{left:7%;top:22%;--pd:0.95s}
+.hero-app.a2{left:14%;top:46%;width:52px;height:52px;--pd:1.02s}
+.hero-app.a3{left:6%;top:68%;--pd:1.09s}
+.hero-app.a4{left:16%;top:86%;width:50px;height:50px;--pd:1.16s}
+.hero-app.a5{right:14%;top:22%;width:52px;height:52px;--pd:1.23s}
+.hero-app.a6{right:6%;top:46%;--pd:1.30s}
+.hero-app.a7{right:15%;top:68%;width:50px;height:50px;--pd:1.37s}
+.hero-app.a8{right:7%;top:86%;--pd:1.44s}
+.hero-app.a2 svg{animation-delay:-1.6s}
+.hero-app.a3 svg{animation-delay:-3.1s}
+.hero-app.a4 svg{animation-delay:-4.4s}
+.hero-app.a5 svg{animation-delay:-2.2s}
+.hero-app.a6 svg{animation-delay:-0.9s}
+.hero-app.a7 svg{animation-delay:-3.8s}
+.hero-app.a8 svg{animation-delay:-5.2s}
 @keyframes appFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
 @media(max-width:960px){.hero-apps{display:none}}
 
@@ -3354,11 +3362,108 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 /* ── Footer — socials masqués tant que les URLs réelles manquent ── */
 .footer-socials[hidden]{display:none!important}
 
-/* ── Accessibilité : mouvement réduit ── */
+/* ════════════════════════════════════════════════════════════════════════
+   ■  MOTION DESIGN — "les aplats qui bougent"
+   Le mouvement, c'est la DA elle-même : des panneaux de couleurs de la
+   charte qui balayent, révèlent, répondent au scroll. Zéro dégradé.
+   Tous les états initiaux cachés sont gatés par body.js-anim (posé en JS,
+   jamais si prefers-reduced-motion) : sans JS, la page s'affiche normale.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. RIDEAU D'OUVERTURE — vert → beige → blanc ── */
+#page-loader{background:transparent}
+.loader-curtain{position:absolute;inset:0;transform:translateY(0)}
+.loader-curtain.c1{background:var(--green-deep);z-index:3}
+.loader-curtain.c2{background:var(--beige);z-index:2}
+.loader-curtain.c3{background:var(--white);z-index:1}
+.loader-inner{position:relative;z-index:4;transition:opacity 0.22s ease,transform 0.22s ease}
+#page-loader.away{pointer-events:none}
+#page-loader.away .loader-inner{opacity:0;transform:scale(0.94)}
+#page-loader.away .loader-curtain{transform:translateY(-101%);transition:transform 0.68s cubic-bezier(.83,0,.17,1)}
+#page-loader.away .c2{transition-delay:0.11s}
+#page-loader.away .c3{transition-delay:0.22s}
+
+/* ── 2. CHORÉGRAPHIE HÉRO — le slogan monte mot à mot ── */
+.hero-slogan .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero-slogan .wi{display:inline-block}
+.hero-slogan em{display:inline-block;position:relative;white-space:nowrap}
+.hero-slogan em::after{
+  content:'';position:absolute;left:0;right:0;bottom:0.03em;height:0.075em;
+  background:var(--green);transform:scaleX(0);transform-origin:left;
+}
+body.js-anim .hero-eyebrow,
+body.js-anim #hero .hero-subtitle,
+body.js-anim .hero-ctas,
+body.js-anim .hero-scroll-hint,
+body.js-anim .hero-app{opacity:0}
+body.js-anim .hero-slogan .wi{transform:translateY(112%)}
+body.hero-go .hero-eyebrow{animation:mFade 0.7s cubic-bezier(.16,1,.3,1) 0.05s both}
+body.hero-go .hero-slogan .wi{animation:mRise 0.85s cubic-bezier(.16,1,.3,1) both}
+body.hero-go .hero-slogan > .w:nth-child(1) .wi{animation-delay:0.16s}
+body.hero-go .hero-slogan > .w:nth-child(2) .wi{animation-delay:0.22s}
+body.hero-go .hero-slogan > .w:nth-child(3) .wi{animation-delay:0.28s}
+body.hero-go .hero-slogan em .w:nth-child(1) .wi{animation-delay:0.38s}
+body.hero-go .hero-slogan em .w:nth-child(2) .wi{animation-delay:0.44s}
+body.hero-go .hero-slogan em .w:nth-child(3) .wi{animation-delay:0.50s}
+body.hero-go .hero-slogan em::after{animation:mUnder 0.55s cubic-bezier(.16,1,.3,1) 1.25s both}
+body.hero-go #hero .hero-subtitle{animation:mFade 0.7s cubic-bezier(.16,1,.3,1) 0.66s both}
+body.hero-go .hero-ctas{animation:mFadeUp 0.7s cubic-bezier(.16,1,.3,1) 0.78s both}
+body.hero-go .hero-scroll-hint{animation:mFade 0.9s ease 1.7s both}
+body.hero-go .hero-app{animation:mPop 0.65s cubic-bezier(.34,1.56,.64,1) var(--pd,1s) backwards;opacity:1}
+@keyframes mRise{from{transform:translateY(112%)}to{transform:translateY(0)}}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+@keyframes mFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes mUnder{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes mPop{from{opacity:0;transform:scale(0) rotate(-9deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+
+/* ── 3. LAMES DE TITRES — un aplat doré balaye, le titre apparaît ── */
+.blade-host{position:relative}
+.title-txt{display:block;position:relative;z-index:1}
+body.js-anim .title-txt{opacity:0}
+.title-blade{
+  position:absolute;inset:-0.05em -0.12em;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  pointer-events:none;z-index:2;
+}
+.blade-host.tgo .title-txt{animation:mFade 0.01s 0.4s both}
+.blade-host.tgo .title-blade{animation:mBlade 0.85s cubic-bezier(.83,0,.17,1) both}
+@keyframes mBlade{
+  0%{transform:scaleX(0);transform-origin:left}
+  46%{transform:scaleX(1);transform-origin:left}
+  54%{transform:scaleX(1);transform-origin:right}
+  100%{transform:scaleX(0);transform-origin:right}
+}
+
+/* ── 4. WIPES D'IMAGES — les visuels s'ouvrent par le bas ── */
+body.js-anim .design-card.reveal,
+body.js-anim .cm-visuals.reveal-left,
+body.js-anim .cm-visuals.reveal-right{
+  transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1),clip-path 1s cubic-bezier(.16,1,.3,1);
+  clip-path:inset(0 0 22% 0);
+}
+body.js-anim .design-card.reveal.visible,
+body.js-anim .cm-visuals.reveal-left.visible,
+body.js-anim .cm-visuals.reveal-right.visible{clip-path:inset(0 0 0% 0)}
+
+/* ── 5. NAV — s'efface en descendant, revient en remontant ── */
+nav{transition:transform 0.5s cubic-bezier(.16,1,.3,1),box-shadow 0.3s ease}
+@media(min-width:900px){nav.nav-hide{transform:translateX(-50%) translateY(-160%)!important}}
+@media(max-width:899px){nav.nav-hide{transform:translateY(-110%)!important}}
+
+/* ── 6. MARQUEES pilotés en JS (vélocité + skew) : will-change ── */
+.logos-track,.ticker-track{will-change:transform}
+
+/* ── Accessibilité : mouvement réduit — tout est statique ── */
 @media(prefers-reduced-motion:reduce){
+  #page-loader{background:var(--green-deep)}
+  .loader-curtain{display:none!important}
   .logos-track{animation:none!important}
-  .hero-app{animation:none!important}
+  .hero-app{animation:none!important;opacity:1!important}
+  .hero-app svg{animation:none!important}
   .ticker-track{animation-play-state:paused!important}
+  nav{transition:box-shadow 0.3s ease}
+  nav.nav-hide{transform:none!important}
 }
 </style>
 </head>
@@ -3366,8 +3471,11 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 
 <!-- Curseur custom retiré — retour au curseur natif (feedback DA) -->
 
-<!-- PAGE LOADER -->
+<!-- PAGE LOADER — rideau d'aplats : vert → beige → blanc -->
 <div id="page-loader">
+  <div class="loader-curtain c3" aria-hidden="true"></div>
+  <div class="loader-curtain c2" aria-hidden="true"></div>
+  <div class="loader-curtain c1" aria-hidden="true"></div>
   <div class="loader-inner">
     <img class="loader-logo" src="icone fond vert.PNG" alt="Studio Com'El">
     <div class="loader-bar"><div class="loader-fill"></div></div>
@@ -3416,7 +3524,7 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
         <span>Studio de communication digitale · Dakar, Sénégal</span>
         <div class="hero-eyebrow-line"></div>
       </div>
-      <h1 class="hero-slogan">De la com' <em>à la réalisation</em></h1>
+      <h1 class="hero-slogan"><span class="w"><span class="wi">De</span></span> <span class="w"><span class="wi">la</span></span> <span class="w"><span class="wi">com'</span></span> <em><span class="w"><span class="wi">à</span></span> <span class="w"><span class="wi">la</span></span> <span class="w"><span class="wi">réalisation</span></span></em></h1>
       <p class="hero-subtitle">Stratégie &nbsp;·&nbsp; Contenu &nbsp;·&nbsp; Réactivité</p>
       <div class="hero-ctas">
         <a href="#devis" class="btn-primary"><span>Demander un devis</span><span class="btn-primary-arrow">→</span></a>
@@ -4022,15 +4130,34 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 </div>
 
 <script>
-// ── PAGE LOADER — disparaît au load ou après 2s max ──
-function hideLoader() { const l = document.getElementById('page-loader'); if (l) l.classList.add('hidden'); }
-window.addEventListener('load', () => setTimeout(hideLoader, 600));
-setTimeout(hideLoader, 2000);
+// ── MOTION — respect de la préférence utilisateur ──
+const MOTION_OK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (MOTION_OK) document.body.classList.add('js-anim');
 
-// ── NAV SCROLL ──
+// ── PAGE LOADER — rideau d'aplats (vert → beige → blanc) puis chorégraphie héro ──
+function hideLoader() {
+  const l = document.getElementById('page-loader');
+  if (!l || l.dataset.done) return;
+  l.dataset.done = '1';
+  if (!MOTION_OK) { l.classList.add('hidden'); document.body.classList.add('hero-go'); return; }
+  l.classList.add('away');
+  setTimeout(() => document.body.classList.add('hero-go'), 380);
+  setTimeout(() => l.classList.add('hidden'), 1100);
+}
+window.addEventListener('load', () => setTimeout(hideLoader, 450));
+setTimeout(hideLoader, 2600);
+
+// ── NAV SCROLL — état scrolled + masquage à la descente ──
+let navPrevY = window.scrollY;
 window.addEventListener('scroll', () => {
-  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
-});
+  const nav = document.querySelector('nav');
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 40);
+  if (MOTION_OK && !document.querySelector('.nav-links.mobile-open')) {
+    nav.classList.toggle('nav-hide', y > navPrevY && y > 320);
+  }
+  navPrevY = y;
+}, { passive: true });
 
 // ── MOBILE NAV ──
 function toggleMobileNav() {
@@ -4235,6 +4362,81 @@ window.addEventListener('DOMContentLoaded', () => {
     obs.observe(el);
   });
 })();
+
+// ── MOTION : LAMES DE TITRES — un aplat doré balaye, le titre apparaît ──
+if (MOTION_OK) {
+  document.querySelectorAll('.section-title, .trust-title, .about-title, .relance-title').forEach(h => {
+    const txt = document.createElement('span');
+    txt.className = 'title-txt';
+    while (h.firstChild) txt.appendChild(h.firstChild);
+    h.appendChild(txt);
+    const blade = document.createElement('span');
+    blade.className = 'title-blade';
+    blade.setAttribute('aria-hidden', 'true');
+    h.appendChild(blade);
+    h.classList.add('blade-host');
+  });
+  const bladeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('tgo'); bladeObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.blade-host').forEach(h => bladeObs.observe(h));
+}
+
+// ── MOTION : MARQUEES — vitesse de base + vélocité de scroll + skew ──
+if (MOTION_OK) {
+  const tracks = [...document.querySelectorAll('.logos-track, .ticker-track')].map(el => {
+    el.style.animation = 'none';
+    return { el, x: 0, half: 0, slow: 1, base: el.classList.contains('ticker-track') ? 0.55 : 0.75 };
+  });
+  tracks.forEach(t => {
+    const m = t.el.closest('.logos-marquee');
+    if (m) {
+      m.addEventListener('mouseenter', () => { t.slow = 0.22; });
+      m.addEventListener('mouseleave', () => { t.slow = 1; });
+    }
+  });
+  let vel = 0, lastY = window.scrollY;
+  window.addEventListener('scroll', () => { vel += window.scrollY - lastY; lastY = window.scrollY; }, { passive: true });
+  window.addEventListener('resize', () => tracks.forEach(t => { t.half = t.el.scrollWidth / 2; }));
+  (function marqueeLoop() {
+    vel *= 0.9;
+    const boost = Math.min(Math.abs(vel) * 0.14, 16);
+    const skew = Math.max(-9, Math.min(9, vel * 0.3));
+    tracks.forEach(t => {
+      if (!t.half) t.half = t.el.scrollWidth / 2;
+      if (!t.half) return;
+      t.x -= (t.base * t.slow) + boost;
+      if (t.x <= -t.half) t.x += t.half;
+      t.el.style.transform = `translateX(${t.x.toFixed(2)}px) skewX(${skew.toFixed(2)}deg)`;
+    });
+    requestAnimationFrame(marqueeLoop);
+  })();
+}
+
+// ── MOTION : PARALLAXE SOURIS — les icônes du héro suivent en profondeur ──
+if (MOTION_OK && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  const heroEl = document.getElementById('hero');
+  const apps = [...document.querySelectorAll('.hero-app')];
+  if (heroEl && apps.length) {
+    const depth = [26, 15, 32, 13, 18, 30, 14, 24];
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    heroEl.addEventListener('mousemove', e => {
+      tx = e.clientX / window.innerWidth - 0.5;
+      ty = e.clientY / window.innerHeight - 0.5;
+    });
+    heroEl.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+    (function parallaxLoop() {
+      cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05;
+      apps.forEach((a, i) => {
+        const d = depth[i % depth.length];
+        a.style.transform = `translate3d(${(-cx * d).toFixed(2)}px,${(-cy * d).toFixed(2)}px,0)`;
+      });
+      requestAnimationFrame(parallaxLoop);
+    })();
+  }
+}
 </script>
 </body>
 </html>
