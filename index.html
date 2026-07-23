@@ -3543,6 +3543,39 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 .design-card,.affiche-item,.cm-img{transition:transform 0.45s cubic-bezier(.16,1,.3,1),box-shadow 0.45s,border-color 0.4s}
 
 /* ════════════════════════════════════════════════════════════════════════
+   ■  STATS BAR — icônes, filet or qui se trace, eyebrow d'identité
+   ════════════════════════════════════════════════════════════════════════ */
+#stats-bar{padding:clamp(44px,5vw,66px) 0!important}
+.stats-eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto clamp(30px,4vw,46px);
+  font-size:0.66rem;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;
+  color:rgba(11,61,50,0.58);
+}
+.stats-eyebrow-line{width:34px;height:1px;background:rgba(200,185,122,0.75)}
+#stats-bar .stat-block{
+  padding:clamp(6px,1.6vw,16px) clamp(16px,3vw,40px)!important;
+  display:flex;flex-direction:column;align-items:center;
+}
+.stat-icon{display:flex;align-items:center;justify-content:center;margin-bottom:16px;opacity:0.92}
+.stat-icon svg{width:27px;height:27px;stroke:var(--green);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#stats-bar .stat-number{color:var(--green)!important;font-size:clamp(54px,7vw,78px)!important;line-height:1!important}
+.stat-rule{
+  width:36px;height:3px;border-radius:2px;background:var(--accent);
+  margin:15px 0 13px;
+  transform:scaleX(0);transform-origin:center;
+  transition:transform 0.65s cubic-bezier(.16,1,.3,1) 0.25s;
+}
+.stat-block.visible .stat-rule{transform:scaleX(1)}
+#stats-bar .stat-label{color:rgba(11,61,50,0.55)!important;font-size:0.72rem!important;letter-spacing:0.14em!important}
+.stat-block+.stat-block::before{background:rgba(11,61,50,0.13)!important;top:26%!important;bottom:26%!important}
+@media(max-width:640px){
+  .stats-inner{grid-template-columns:1fr!important;gap:8px}
+  .stat-block+.stat-block::before{display:none}
+  #stats-bar .stat-block{padding:22px 16px!important}
+}
+
+/* ════════════════════════════════════════════════════════════════════════
    ■  NOS SERVICES — header resserré + cartes cliquables vers le devis
    ════════════════════════════════════════════════════════════════════════ */
 .services-intro{max-width:600px;margin-top:22px;font-size:0.92rem;line-height:1.7;color:rgba(245,240,220,0.5)}
@@ -3696,17 +3729,24 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 
 <!-- STATS BAR -->
 <section id="stats-bar">
+  <div class="stats-eyebrow reveal"><span class="stats-eyebrow-line"></span>Studio Com'El en chiffres<span class="stats-eyebrow-line"></span></div>
   <div class="stats-inner">
     <div class="stat-block reveal">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <span class="stat-number">+50</span>
+      <span class="stat-rule"></span>
       <span class="stat-label">Clients accompagnés</span>
     </div>
     <div class="stat-block reveal">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
       <span class="stat-number">+1M</span>
+      <span class="stat-rule"></span>
       <span class="stat-label">Interactions générées</span>
     </div>
     <div class="stat-block reveal">
+      <span class="stat-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       <span class="stat-number">93%</span>
+      <span class="stat-rule"></span>
       <span class="stat-label">Retours positifs</span>
     </div>
   </div>
