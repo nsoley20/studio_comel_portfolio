@@ -3590,6 +3590,47 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 #services .service-card .sc-cta{margin-top:auto!important;padding-top:22px!important}
 
 /* ════════════════════════════════════════════════════════════════════════
+   ■  MOBILE — passe responsive dédiée (≤760px)
+   Corrige : nav cramée, lames de titre lourdes, index coupés, héro vide,
+   vides de la section Trust. Le héro montre la boîte à outils en cluster.
+   ════════════════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  /* Nav : logo + burger seulement (le devis est dans le menu et partout ailleurs) */
+  .nav-cta{display:none!important}
+
+  /* Lames de titre coupées sur mobile (lourdes sur les titres multi-lignes) ;
+     le texte reste toujours visible */
+  .title-blade{display:none!important}
+  body.js-anim .title-txt{opacity:1!important}
+
+  /* Index de section décoratifs masqués (ils débordaient à droite) */
+  .services-inner::after,.projets-inner::after,.devis-inner::after,
+  .hero-inner::after,.resources-inner::after{content:none!important}
+
+  /* Héro : hauteur au contenu + les 8 outils en cluster statique sous les CTA */
+  #hero{display:flex!important;flex-direction:column!important;justify-content:center!important;
+        min-height:auto!important;padding:116px 0 74px!important}
+  .hero-inner{padding:0 24px!important}
+  .hero-apps{display:flex!important;position:static!important;inset:auto!important;order:2;
+             flex-wrap:wrap;justify-content:center;gap:13px;margin:42px auto 0;max-width:298px;pointer-events:none}
+  .hero-app{position:static!important;transform:none!important;opacity:1!important;animation:none!important;
+            width:50px!important;height:50px!important;box-shadow:0 6px 18px rgba(7,13,11,0.09)!important}
+  .hero-scroll-hint{display:none!important}
+
+  /* Trust : rythme vertical resserré (fini les grands vides) */
+  #trust{padding-top:clamp(52px,10vw,78px)!important}
+  .trust-header{margin-bottom:24px!important}
+  .trust-subtitle{margin-top:14px!important}
+  .trust-rule{margin-bottom:28px!important;gap:12px}
+  .trust-rule-text{white-space:normal!important;text-align:center}
+  .logos-marquee{padding:24px 0 32px!important}
+  .logo-item{font-size:1.5rem!important;padding:0 22px!important}
+
+  /* Titres un cran plus compacts pour éviter les débordements verticaux */
+  #projets .projets-header{padding-bottom:22px!important;margin-bottom:22px!important}
+}
+
+/* ════════════════════════════════════════════════════════════════════════
    ■  DEVIS — carte en deux panneaux
    Panneau vert au motif (réassurance + WhatsApp direct) + formulaire.
    ════════════════════════════════════════════════════════════════════════ */
