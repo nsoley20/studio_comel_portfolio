@@ -3511,6 +3511,38 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 .guide-cover-img{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,0.45)}
 
 /* ════════════════════════════════════════════════════════════════════════
+   ■  RÉALISATIONS — refonte zone header + onglets + cartes projets
+   Vide mort supprimé, onglets nets, aplats stricts, badges avant/après.
+   ════════════════════════════════════════════════════════════════════════ */
+/* Zone header resserrée : la phrase d'intro remplace le divider fantôme */
+#projets .projets-header{margin-bottom:26px!important;padding-bottom:28px!important}
+#projets .projets-header::after{background:rgba(200,185,122,0.2)!important}
+.projets-intro{max-width:620px;margin-bottom:30px;font-size:0.92rem;line-height:1.7;color:rgba(245,240,220,0.5)}
+#projets .tabs-bar{margin-bottom:clamp(40px,5vw,60px)!important}
+
+/* Onglets — état actif net : aplat or, texte vert profond */
+#projets .tab-btn{color:rgba(245,240,220,0.42)!important}
+#projets .tab-btn:hover:not(.active){color:rgba(245,240,220,0.82)!important;background:rgba(245,240,220,0.05)!important}
+#projets .tab-btn.active{background:var(--accent)!important;color:var(--green-deep)!important;box-shadow:none!important}
+#projets .tab-btn.active .tab-count{color:var(--accent)!important;background:var(--green-deep)!important;border-color:transparent!important}
+#projets .tab-btn.active .tab-icon{filter:none!important}
+
+/* Nom de projet CM — aplat beige (plus de dégradé de texte) */
+.cm-info-name{background:none!important;-webkit-text-fill-color:var(--beige)!important;color:var(--beige)!important}
+
+/* Badges avant/après — toujours lisibles, l'"après" mis en avant en or */
+.cm-img-badge{opacity:1!important;transform:none!important;background:var(--green-deep)!important;color:var(--beige)!important;border-color:rgba(200,185,122,0.3)!important}
+.cm-visuals .cm-img:last-child .cm-img-badge{background:var(--accent)!important;color:var(--green-deep)!important;border-color:transparent!important}
+
+/* Relance — fond en aplat + motif (plus de radial-gradient) */
+.relance-wrapper{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important;background-size:420px!important}
+
+/* Motion : transition d'onglet plus ample + réactive au survol des cartes */
+.tab-content.active{animation:tabIn 0.5s cubic-bezier(.16,1,.3,1) both}
+@keyframes tabIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.design-card,.affiche-item,.cm-img{transition:transform 0.45s cubic-bezier(.16,1,.3,1),box-shadow 0.45s,border-color 0.4s}
+
+/* ════════════════════════════════════════════════════════════════════════
    ■  DEVIS — carte en deux panneaux
    Panneau vert au motif (réassurance + WhatsApp direct) + formulaire.
    ════════════════════════════════════════════════════════════════════════ */
@@ -3800,11 +3832,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
         <span class="projets-big-label">Projets<br>livrés</span>
       </div>
     </div>
-    <div class="projets-divider reveal">
-      <div class="projets-divider-line"></div>
-      <div class="projets-divider-dot"></div>
-      <div class="projets-divider-line"></div>
-    </div>
+    <p class="projets-intro reveal">Community management, identité visuelle, affiches : un aperçu concret des marques accompagnées depuis 2022, avant / après à l'appui.</p>
     <div class="tabs-bar">
       <button class="tab-btn active" onclick="switchTab('cm',this)">Community Management <span class="tab-count">4</span></button>
       <button class="tab-btn" onclick="switchTab('design',this)">Conception Graphique <span class="tab-count">2</span></button>
