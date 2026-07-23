@@ -3543,6 +3543,20 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 .design-card,.affiche-item,.cm-img{transition:transform 0.45s cubic-bezier(.16,1,.3,1),box-shadow 0.45s,border-color 0.4s}
 
 /* ════════════════════════════════════════════════════════════════════════
+   ■  NOS SERVICES — header resserré + cartes cliquables vers le devis
+   ════════════════════════════════════════════════════════════════════════ */
+.services-intro{max-width:600px;margin-top:22px;font-size:0.92rem;line-height:1.7;color:rgba(245,240,220,0.5)}
+#services .section-header{margin-bottom:clamp(40px,5vw,64px)!important}
+/* Cartes cliquables : le CTA devient un vrai appel, toujours visible */
+#services .service-card{cursor:pointer!important}
+#services .service-card .sc-cta{opacity:1!important;transform:none!important;margin-top:26px!important}
+#services .service-card:hover .sc-cta-arrow{width:26px!important}
+#services .service-card:focus-visible{outline:2px solid var(--accent)!important;outline-offset:3px!important}
+/* La grande carte pousse son CTA en bas pour combler le vide */
+#services .service-card{display:flex!important;flex-direction:column!important}
+#services .service-card .sc-cta{margin-top:auto!important;padding-top:22px!important}
+
+/* ════════════════════════════════════════════════════════════════════════
    ■  DEVIS — carte en deux panneaux
    Panneau vert au motif (réassurance + WhatsApp direct) + formulaire.
    ════════════════════════════════════════════════════════════════════════ */
@@ -3704,6 +3718,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
     <div class="section-header reveal">
       <span class="section-eyebrow">Ce que nous faisons</span>
       <h2 class="section-title">NOS SERVICES</h2>
+      <p class="services-intro">Quatre façons de travailler ensemble. Cliquez sur un service pour lancer votre demande, il est déjà pré-rempli dans le devis.</p>
     </div>
 
     <div class="services-grid">
@@ -3721,7 +3736,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
         <div class="sc-tags">
           <span>Instagram</span><span>TikTok</span><span>Facebook</span><span>LinkedIn</span>
         </div>
-        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
+        <div class="sc-cta">Demander ce service <span class="sc-cta-arrow"></span></div>
       </div>
 
       <!-- 02 — Conception graphique (compact droite) -->
@@ -3737,7 +3752,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
         <div class="sc-tags">
           <span>Branding</span><span>Affiches</span><span>Flyers</span>
         </div>
-        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
+        <div class="sc-cta">Demander ce service <span class="sc-cta-arrow"></span></div>
       </div>
 
       <!-- 03 — Audit (compact gauche) -->
@@ -3753,7 +3768,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
         <div class="sc-tags">
           <span>Analyse</span><span>KPIs</span><span>Benchmark</span>
         </div>
-        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
+        <div class="sc-cta">Demander ce service <span class="sc-cta-arrow"></span></div>
       </div>
 
       <!-- 04 — Stratégie (large droite) -->
@@ -3769,7 +3784,7 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
         <div class="sc-tags">
           <span>Positionnement</span><span>Plan éditorial</span><span>Croissance</span>
         </div>
-        <div class="sc-cta">Découvrir <span class="sc-cta-arrow"></span></div>
+        <div class="sc-cta">Demander ce service <span class="sc-cta-arrow"></span></div>
       </div>
 
     </div>
@@ -4509,6 +4524,25 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 });
+
+// ── SERVICES : carte cliquable → devis pré-rempli ──
+(function(){
+  const map = { 'sc-1':'gestion-rs', 'sc-2':'conception', 'sc-3':'audit', 'sc-4':'strategie' };
+  document.querySelectorAll('#services .service-card').forEach(card => {
+    const val = Object.keys(map).find(c => card.classList.contains(c));
+    if (!val) return;
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+    const go = () => {
+      const opt = document.querySelector('#step-1 .form-option[data-val="' + map[val] + '"]');
+      if (opt) opt.click();
+      const devis = document.getElementById('devis');
+      if (devis) devis.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+})();
 
 // ── CM STAT BARS ──
 (function(){
