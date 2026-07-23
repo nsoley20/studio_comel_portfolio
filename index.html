@@ -4637,40 +4637,76 @@ if (MOTION_OK) {
   })();
 }
 
-// ── MOTION : ICÔNES DU HÉRO — flottement continu + parallaxe souris + scroll ──
-// Trois mouvements combinés dans un seul transform :
-//   1. dérive orbitale permanente (la page ne bouge pas → ça flotte quand même)
-//   2. suivi de la souris en profondeur (desktop)
-//   3. glissement différencié pendant le scroll (chaque tuile à sa vitesse)
+// ── MOTION : ICÔNES DU HÉRO — "de la com' à la réalisation" ──
+// Un seul moteur combine quatre gestes dans chaque frame :
+//   1. flottement permanent (la page immobile → ça vit quand même)
+//   2. parallaxe souris en profondeur (chaque tuile à sa couche)
+//   3. magnétisme tactile : à l'approche du curseur, la tuile est attirée,
+//      se soulève, s'incline vers lui et son ombre s'accentue
+//   4. convergence au scroll : les 8 outils dispersés se rassemblent au
+//      centre et se fondent — la "com'" éparpillée devient la "réalisation"
 if (MOTION_OK) {
   const heroEl = document.getElementById('hero');
   const apps = [...document.querySelectorAll('.hero-app')];
   if (heroEl && apps.length) {
-    const depth     = [26, 15, 32, 13, 18, 30, 14, 24];
-    const phase     = [0, 0.9, 1.7, 2.6, 3.4, 4.2, 5.1, 5.9];
-    const scrollFac = [-0.10, 0.07, -0.05, 0.11, -0.08, 0.05, -0.12, 0.08];
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    const depth = [26, 15, 32, 13, 18, 30, 14, 24];
+    const phase = [0, 0.9, 1.7, 2.6, 3.4, 4.2, 5.1, 5.9];
+    const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    let homes = [], center = { x: 0, y: 0 }, heroRect = { left: 0, top: 0 };
+    function measure() {
+      heroRect = heroEl.getBoundingClientRect();
+      center = { x: heroEl.clientWidth / 2, y: heroEl.clientHeight / 2 };
+      homes = apps.map(a => ({ x: a.offsetLeft + a.offsetWidth / 2, y: a.offsetTop + a.offsetHeight / 2 }));
+    }
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('scroll', () => { heroRect = heroEl.getBoundingClientRect(); }, { passive: true });
+    let tx = 0, ty = 0, cx = 0, cy = 0, mx = -9999, my = -9999;
+    if (fine) {
       heroEl.addEventListener('mousemove', e => {
         tx = e.clientX / window.innerWidth - 0.5;
         ty = e.clientY / window.innerHeight - 0.5;
+        mx = e.clientX - heroRect.left;
+        my = e.clientY - heroRect.top;
       });
-      heroEl.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+      heroEl.addEventListener('mouseleave', () => { tx = 0; ty = 0; mx = -9999; my = -9999; });
     }
-    (function appsLoop(now) {
+    const R = 175, PULL = 30;
+    (function loop(now) {
       const t = (now || 0) / 1000;
-      cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05;
-      if (window.scrollY < heroEl.offsetHeight + 200) {
+      cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
+      const sp = Math.min(window.scrollY / Math.max(heroEl.offsetHeight * 0.85, 1), 1);
+      const ease = sp * sp;          // progression de la convergence
+      const damp = 1 - ease;
+      if (sp < 1.02) {
         apps.forEach((a, i) => {
-          const d = depth[i % 8], p = phase[i % 8];
-          const driftX = Math.sin(t * 0.7 + p) * (10 + d * 0.5);
-          const driftY = Math.cos(t * 0.55 + p * 1.3) * (12 + d * 0.55);
-          const wobble = Math.sin(t * 0.5 + p * 2) * 2.4;
-          const sc = window.scrollY * scrollFac[i % 8];
-          a.style.transform = `translate3d(${(-cx * d + driftX).toFixed(2)}px,${(-cy * d + driftY + sc).toFixed(2)}px,0) rotate(${wobble.toFixed(2)}deg)`;
+          const h = homes[i], d = depth[i % 8], ph = phase[i % 8];
+          const convX = (center.x - h.x) * ease;
+          const convY = (center.y - h.y) * ease;
+          const driftX = Math.sin(t * 0.7 + ph) * (10 + d * 0.5) * damp;
+          const driftY = Math.cos(t * 0.55 + ph * 1.3) * (12 + d * 0.55) * damp;
+          const parX = -cx * d * damp, parY = -cy * d * damp;
+          let wob = Math.sin(t * 0.5 + ph * 2) * 2.4 * damp;
+          let pullX = 0, pullY = 0, lift = 0;
+          if (fine && damp > 0.5) {
+            const dx = mx - h.x, dy = my - h.y, dist = Math.hypot(dx, dy) || 1;
+            if (dist < R) {
+              const f = 1 - dist / R;
+              pullX = (dx / dist) * f * PULL;
+              pullY = (dy / dist) * f * PULL;
+              wob += (dx / dist) * f * 6;
+              lift = f * 0.22;
+            }
+          }
+          const scale = (1 - ease * 0.3) + lift;
+          const x = (convX + driftX + parX + pullX).toFixed(2);
+          const y = (convY + driftY + parY + pullY).toFixed(2);
+          a.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale.toFixed(3)}) rotate(${wob.toFixed(2)}deg)`;
+          a.style.opacity = ease > 0.002 ? (1 - ease).toFixed(3) : '';
+          a.style.boxShadow = lift > 0.01 ? `0 ${(14 + lift * 90).toFixed(0)}px ${(34 + lift * 60).toFixed(0)}px rgba(7,13,11,${(0.12 + lift * 0.5).toFixed(2)})` : '';
         });
       }
-      requestAnimationFrame(appsLoop);
+      requestAnimationFrame(loop);
     })();
   }
 }
