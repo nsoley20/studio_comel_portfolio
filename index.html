@@ -3280,7 +3280,26 @@ footer::after{content:none!important}                 /* watermark 'STUDIO COM'E
 .hero-app.a6{right:6%;top:46%;--pd:1.30s}
 .hero-app.a7{right:15%;top:68%;width:50px;height:50px;--pd:1.37s}
 .hero-app.a8{right:7%;top:86%;--pd:1.44s}
-@media(max-width:960px){.hero-apps{display:none}}
+/* ≤960px : les icônes RESTENT flottantes (même moteur JS : flottement idle +
+   convergence au scroll) — elles migrent juste dans les bandes haute et basse,
+   à l'écart de la colonne de texte centrée, et rapetissent. */
+@media(max-width:960px){
+  .hero-apps{display:block}
+  .hero-app{width:44px!important;height:44px!important}
+  .hero-app svg{width:20px!important;height:20px!important}
+  .hero-app.a1{left:7%;top:17%}
+  .hero-app.a2{left:29%;top:12%}
+  .hero-app.a3{left:7%;top:85%}
+  .hero-app.a4{left:29%;top:90%}
+  .hero-app.a5{right:29%;top:12%}
+  .hero-app.a6{right:7%;top:17%}
+  .hero-app.a7{right:29%;top:90%}
+  .hero-app.a8{right:7%;top:85%}
+}
+@media(max-width:430px){
+  .hero-app{width:37px!important;height:37px!important}
+  .hero-app svg{width:17px!important;height:17px!important}
+}
 
 /* ════════════════════════════════════════════════════════════════════════
    ■  SERVICES — cartes sombres validées par Lionelle, en aplat
@@ -3546,6 +3565,8 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
    ■  STATS BAR — icônes, filet or qui se trace, eyebrow d'identité
    ════════════════════════════════════════════════════════════════════════ */
 #stats-bar{padding:clamp(44px,5vw,66px) 0!important}
+/* Les 3 chiffres restent côte à côte à toutes les tailles (comme desktop) */
+#stats-bar .stats-inner{grid-template-columns:repeat(3,1fr)!important}
 .stats-eyebrow{
   display:flex;align-items:center;justify-content:center;gap:14px;
   margin:0 auto clamp(30px,4vw,46px);
@@ -3569,10 +3590,17 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
 .stat-block.visible .stat-rule{transform:scaleX(1)}
 #stats-bar .stat-label{color:rgba(11,61,50,0.55)!important;font-size:0.72rem!important;letter-spacing:0.14em!important}
 .stat-block+.stat-block::before{background:rgba(11,61,50,0.13)!important;top:26%!important;bottom:26%!important}
+/* Mobile : les 3 chiffres restent en ligne comme sur desktop, juste rapetissés */
 @media(max-width:640px){
-  .stats-inner{grid-template-columns:1fr!important;gap:8px}
-  .stat-block+.stat-block::before{display:none}
-  #stats-bar .stat-block{padding:22px 16px!important}
+  #stats-bar .stat-block{padding:6px 5px!important}
+  #stats-bar .stat-number{font-size:clamp(30px,9.4vw,52px)!important}
+  .stat-icon{margin-bottom:9px}
+  .stat-icon svg{width:20px;height:20px}
+  .stat-rule{width:26px;height:2px;margin:9px 0 8px}
+  #stats-bar .stat-label{font-size:0.56rem!important;letter-spacing:0.07em!important;line-height:1.35}
+  .stats-eyebrow{font-size:0.57rem;letter-spacing:0.15em;padding:0 14px;text-align:center}
+  .stats-eyebrow-line{width:16px}
+  .stat-block+.stat-block::before{top:14%!important;bottom:14%!important}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -3607,14 +3635,11 @@ footer{background:var(--green-deep) url('img/motif-fonce.webp') repeat!important
   .services-inner::after,.projets-inner::after,.devis-inner::after,
   .hero-inner::after,.resources-inner::after{content:none!important}
 
-  /* Héro : hauteur au contenu + les 8 outils en cluster statique sous les CTA */
-  #hero{display:flex!important;flex-direction:column!important;justify-content:center!important;
-        min-height:auto!important;padding:116px 0 74px!important}
-  .hero-inner{padding:0 24px!important}
-  .hero-apps{display:flex!important;position:static!important;inset:auto!important;order:2;
-             flex-wrap:wrap;justify-content:center;gap:13px;margin:42px auto 0;max-width:298px;pointer-events:none}
-  .hero-app{position:static!important;transform:none!important;opacity:1!important;animation:none!important;
-            width:50px!important;height:50px!important;box-shadow:0 6px 18px rgba(7,13,11,0.09)!important}
+  /* Héro : plein écran comme sur desktop, la boîte à outils flotte autour du
+     message (positions dans le bloc « bandes ≤960px »). On enlève juste le
+     repère de défilement pour gagner de la hauteur. */
+  #hero{padding:100px 0!important}
+  .hero-inner{padding:0 22px!important}
   .hero-scroll-hint{display:none!important}
 
   /* Trust : rythme vertical resserré (fini les grands vides) */
